@@ -163,5 +163,17 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "description": "> - react\r   - react-router-dom\r   - prop-types\r   - redux\r   - react-redux\r   - redux-thunk\r   - styled-components\r   - whatwg-fetch\r   - react-loadable\r   - 高阶组件\r   - redux-actions\r   - qs \r   - antd-mobile\r   - js-cookie",
+  "main": "config-overrides.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alley88/react-bk1917.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alley88/react-bk1917/issues"
+  },
+  "homepage": "https://github.com/alley88/react-bk1917#readme"
 }

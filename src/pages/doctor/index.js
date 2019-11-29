@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import {PageContainer} from "common/styled"
-export default class Order extends Component {
+export default class Doctor extends Component {
     render() {
         return (
             <PageContainer>
-                Order
+                Find
             </PageContainer>
         )
     }

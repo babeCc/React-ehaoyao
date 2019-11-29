@@ -1,36 +1,31 @@
 import styled from "styled-components";
 
 export const TabBarContainer = styled.div`
-    width:100%;
-    height:1rem;
-    background:#fff;
-    border-top:1px solid #ccc;
-    position:fixed;
-    left:0;
-    bottom:0;
-    ul{
-        width:100%;
-        height:100%;
+    .home_footer{
+        height:50px;
+        bottom:0;
+        left:0;
+        right:0;
+        position: fixed;
+        padding-top:6px;
+        background:#fff;
+        z-index:100;
+        border-top: 1px solid #e5e5e5;
+       ul{
         display:flex;
-        justify-content:space-between;
+        justify-content:space-around;
         align-items:center;
-        .active{
-            color:#c33;
-        }
-    }
-    li{
-        width:100%;
-        height:100%;
-        display:flex;
-        flex-direction:column;
-        justify-content:center;
-        align-items:center;
-        i{
-            font-size:.4rem;
-        }
-        span{
-            font-size:.3rem;
-        }
+        text-align:center;
+            li{
+               i{} 
+                p{
+                    font-size:10px;
+                    
+                }
+            }
+        
+       }
+
     }
 
 

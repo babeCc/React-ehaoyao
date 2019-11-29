@@ -6,13 +6,17 @@ export const Home = Loadable({
     loading: Loading
 })
 
-export const Find = Loadable({
-    loader: () => import("./find"),
+export const List = Loadable({
+    loader: _=> import("./list"),
     loading: Loading
 })
 
-export const Order = Loadable({
-    loader: () => import("./order"),
+export const Doctor = Loadable({
+    loader: () => import("./doctor"),
+    loading: Loading
+})
+export const Cart = Loadable({
+    loader: () => import("./cart"),
     loading: Loading
 })
 

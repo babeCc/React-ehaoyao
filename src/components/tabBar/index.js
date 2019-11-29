@@ -4,35 +4,37 @@ import {TabBarContainer} from "./styled"
 import {withRouter} from "react-router-dom"
 @withRouter
 class TabBar extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
 
-        this.state = {
-            activePath:"/home"
-        }
+      
     }
-    render() {
-        let {activePath} = this.state;
-        return (
+    render(){
+        let {path}=this.props;
+        return(
             <TabBarContainer>
-                <ul>
-                    {
-                       TabBarRoute.map((item)=>(
-                           <li key={item.path} onClick={this.handleTo.bind(this,item.path)}>
+                <div className="home_footer">
+                    <ul>
+                        {
+                            TabBarRoute.map((item)=>(
+                            <li key={item.title} onClick={this.handleTo.bind(this,item.path)}
+                            style={{color:path==item.path?"#ff3c54":"#000"}} 
+                            >
                                 <i className="iconfont">{item.icon}</i>
-                                <span>{item.text}</span>
-                           </li>
-                       )) 
-                    }
-                </ul>
+                                    <p>{item.title}</p>
+                                    
+                            </li>
+                            ))
+                        }
+                    </ul>
+                </div>
             </TabBarContainer>
         )
     }
     handleTo(path){
+       
         this.props.history.push(path);
-        this.setState({
-            activePath:path 
-        })
+    
     }
 }
 
