@@ -4,7 +4,9 @@ import {
     Doctor,
     Cart,
     Mine,
-    Login
+    Login,
+    Detail,
+    Sort,
 } from "pages"
 
 
@@ -19,14 +21,15 @@ export const TabBarRoute = [
         title:"首页"
     },
     {
-        path:"/list",
-        component:List,
+        path:"/sort",
+        component:Sort,
         meta:{
             flag:true
         },
         title:"分类",
         icon:"\ue61d"
     },
+    
     {
         path:"/doctor",
         component:Doctor,
@@ -62,8 +65,28 @@ export const NoTabBarRoute = [
     {
         path:"/login",
         component:Login,
-        meta:{}
-    }
+        meta:{},
+        title:"登录",
+        icon:""
+    },
+    {
+        path:"/detail",
+        component:Detail,
+        meta:{
+            flag:true
+        },
+        title:"详情",
+        icon:""
+    },
+    {
+        path:"/list",
+        component:List,
+        meta:{
+            flag:true
+        },
+        title:"",
+        icon:""
+    },
 ];
 
 
