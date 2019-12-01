@@ -4,8 +4,8 @@ import {TabBarContainer} from "./styled"
 import {withRouter} from "react-router-dom"
 @withRouter
 class TabBar extends Component {
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
 
       
     }

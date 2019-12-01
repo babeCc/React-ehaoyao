@@ -10,9 +10,17 @@ export const List = Loadable({
     loader: _=> import("./list"),
     loading: Loading
 })
+export const Detail = Loadable({
+    loader: _=> import("./detail"),
+    loading: Loading
+})
 
 export const Doctor = Loadable({
     loader: () => import("./doctor"),
+    loading: Loading
+})
+export const Sort = Loadable({
+    loader: () => import("./sort"),
     loading: Loading
 })
 export const Cart = Loadable({
