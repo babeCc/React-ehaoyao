@@ -29,3 +29,18 @@ export const Login = Loadable({
     loader: () => import("./login"),
     loading: Loading
 })
+
+export const Ticket = Loadable({
+    loader:_=> import("./ticket"),
+    loading: Loading
+})
+
+export const Activity = Loadable({
+    loader:_=> import("./activity"),
+    loading:Loading
+})
+
+export const Seacrh = Loadable({
+    loader:_=> import("./search"),
+    loading:Loading
+})

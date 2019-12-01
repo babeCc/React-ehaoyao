@@ -1,0 +1,1 @@
+export const doctorType = "DOCTOR_ASYNC_TYPE";

@@ -1,14 +1,18 @@
 import {
+    Ticket,
     Home,
     List,
     Doctor,
     Cart,
     Mine,
-    Login
+    Login,
+    Activity,
+    Seacrh
 } from "pages"
 
 
 export const TabBarRoute = [
+    
     {
         path:"/home",
         component:Home,
@@ -31,7 +35,7 @@ export const TabBarRoute = [
         path:"/doctor",
         component:Doctor,
         meta:{
-            flag:true
+            flag:false
         },
         title:"问好药师",
         icon:"\ue601"
@@ -63,7 +67,27 @@ export const NoTabBarRoute = [
         path:"/login",
         component:Login,
         meta:{}
-    }
+    },
+    {
+        path:"/ticket",
+        component:Ticket,
+        meta:{}
+            
+    },
+    {
+        path:"/activity",
+        component:Activity,
+        meta:{}
+            
+    },
+    {
+        path:"/search",
+        component:Seacrh,
+        meta:{}
+            
+    },
+       
+    
 ];
 
 
