@@ -120,6 +120,7 @@ import {mapStateToProps,mapDispatchToProps} from "./mapStore";
                 }
             }
             render() {
+            
               let {home_goods} = this.props;
              
                 return (

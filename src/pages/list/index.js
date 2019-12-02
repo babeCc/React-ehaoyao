@@ -1,14 +1,25 @@
 import React, { Fragment } from "react"
 import { Header, Container } from "./styled"
 import { Icon } from 'antd';
-
+import {withRouter} from "react-router-dom";
+import {mapStateToProps,mapDispatchToProps} from "./mapStore";
+import {connect} from "react-redux";
+@connect(mapStateToProps,mapDispatchToProps)
+@withRouter
 class List extends React.Component {
+    constructor(){
+        super()
+     
+
+    }
     render() {
+        console.log(this.props.data)
+        let {goods} = this.props;
         return (
             <Fragment>
                 <Header>
-                    <Icon type="left" />
-                    <div>
+                    <Icon type="left" onClick={this.handleBack.bind(this)} />
+                    <div onClick={this.handleToSearch.bind(this)}>
                         <Icon type="search" />
                         <span>请输入药品名称或症状</span>
 
@@ -31,122 +42,35 @@ class List extends React.Component {
                     </div>
                     <div className="product">
                         <ul>
-                            <li>
+                           {    
+                              goods.map((item,index)=>(
+                                <li key={index} onClick={this.handleToDetail.bind(this,item.groupId)}>
                                 <div className="borderimg">
                                     <div className="image">
 
-                                        <img src="http://image.qumaiyao.com/data/goodscenter/imges/EZG329001G900_256804/8a8094216af8f0ff016afe34e50c0251_zfx_mid0.jpg" alt="" />
+                                        <img src={"http://image.qumaiyao.com/"+item.smallPic} alt="" />
                                     </div>
                                 </div>
                                 <div className="content">
                                     <p className="title to">
-                                        <span>自营</span>广誉远 定坤丹口服液 10ml*5支*4小盒
+                                        <span>{item.pharmName=="好药师商城"?"自营":"商家"}</span>{item.goodsName} 
 
                                     </p>
-                                    <p className="to">滋补气血，调经疏郁。用于气血两虚，气滞血瘀所致的月经不调、行经腹痛</p>
-                                    <p className="to">规格: 10ml*5支*4小盒</p>
+                                    <p className="to">{item.brief}</p>
+                                    <p className="to">规格: {item.spec}</p>
                                     <div className="proPrice">
                                         <div>
-                                            <p className="p1">¥<span>1580</span> </p>
-                                            <p className="p2">¥<span>1580</span> </p>
+                                            <p className="p1">¥<span>{item.price}</span> </p>
+                                            <p className="p2">¥<span>{item.oldPrice}</span> </p>
                                         </div>
                                         <h2>+</h2>
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div className="borderimg">
-                                    <div className="image">
-
-                                        <img src="http://image.qumaiyao.com/data/goodscenter/imges/EZG329001G900_256804/8a8094216af8f0ff016afe34e50c0251_zfx_mid0.jpg" alt="" />
-                                    </div>
-                                </div>
-                                <div className="content">
-                                    <p className="title to">
-                                        <span>自营</span>广誉远 定坤丹口服液 10ml*5支*4小盒
-
-                                    </p>
-                                    <p className="to">滋补气血，调经疏郁。用于气血两虚，气滞血瘀所致的月经不调、行经腹痛</p>
-                                    <p className="to">规格: 10ml*5支*4小盒</p>
-                                    <div className="proPrice">
-                                        <div>
-                                            <p className="p1">¥<span>1580</span> </p>
-                                            <p className="p2">¥<span>1580</span> </p>
-                                        </div>
-                                        <h2>+</h2>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="borderimg">
-                                    <div className="image">
-
-                                        <img src="http://image.qumaiyao.com/data/goodscenter/imges/EZG329001G900_256804/8a8094216af8f0ff016afe34e50c0251_zfx_mid0.jpg" alt="" />
-                                    </div>
-                                </div>
-                                <div className="content">
-                                    <p className="title to">
-                                        <span>自营</span>广誉远 定坤丹口服液 10ml*5支*4小盒
-
-                                    </p>
-                                    <p className="to">滋补气血，调经疏郁。用于气血两虚，气滞血瘀所致的月经不调、行经腹痛</p>
-                                    <p className="to">规格: 10ml*5支*4小盒</p>
-                                    <div className="proPrice">
-                                        <div>
-                                            <p className="p1">¥<span>1580</span> </p>
-                                            <p className="p2">¥<span>1580</span> </p>
-                                        </div>
-                                        <h2>+</h2>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="borderimg">
-                                    <div className="image">
-
-                                        <img src="http://image.qumaiyao.com/data/goodscenter/imges/EZG329001G900_256804/8a8094216af8f0ff016afe34e50c0251_zfx_mid0.jpg" alt="" />
-                                    </div>
-                                </div>
-                                <div className="content">
-                                    <p className="title to">
-                                        <span>自营</span>广誉远 定坤丹口服液 10ml*5支*4小盒
-
-                                    </p>
-                                    <p className="to">滋补气血，调经疏郁。用于气血两虚，气滞血瘀所致的月经不调、行经腹痛</p>
-                                    <p className="to">规格: 10ml*5支*4小盒</p>
-                                    <div className="proPrice">
-                                        <div>
-                                            <p className="p1">¥<span>1580</span> </p>
-                                            <p className="p2">¥<span>1580</span> </p>
-                                        </div>
-                                        <h2>+</h2>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="borderimg">
-                                    <div className="image">
-
-                                        <img src="http://image.qumaiyao.com/data/goodscenter/imges/EZG329001G900_256804/8a8094216af8f0ff016afe34e50c0251_zfx_mid0.jpg" alt="" />
-                                    </div>
-                                </div>
-                                <div className="content">
-                                    <p className="title to">
-                                        <span>自营</span>广誉远 定坤丹口服液 10ml*5支*4小盒
-
-                                    </p>
-                                    <p className="to">滋补气血，调经疏郁。用于气血两虚，气滞血瘀所致的月经不调、行经腹痛</p>
-                                    <p className="to">规格: 10ml*5支*4小盒</p>
-                                    <div className="proPrice">
-                                        <div>
-                                            <p className="p1">¥<span>1580</span> </p>
-                                            <p className="p2">¥<span>1580</span> </p>
-                                        </div>
-                                        <h2>+</h2>
-                                    </div>
-                                </div>
-                            </li>
-
+                               ))
+                           }
+                         
+                         
                         </ul>
 
                     </div>
@@ -157,5 +81,22 @@ class List extends React.Component {
 
         )
     }
+    handleToDetail(groudId){
+
+        this.props.history.push("/detail/"+groudId);
+    }
+    handleBack(){
+        this.props.history.goBack()
+    }
+    handleToSearch(){
+        this.props.history.push("/search")
+    }
+    componentDidMount(){
+        let {link} = this.props.match.params;
+        
+        this.props.handleGetLink(link);
+        
+    }
+  
 }
 export default List;

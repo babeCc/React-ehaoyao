@@ -45,6 +45,11 @@ export const Container=styled.div`
     height:auto;
     overflow:auto;
     background-color: #f5f5f5;
+    .HTML{
+        img{
+            width:3.2rem;
+        }
+    }
     p{
         margin-bottom:0
         
@@ -85,8 +90,8 @@ export const Container=styled.div`
         color: #ed4443;
         i{
             font-size: 0.136rem;
-            font-style:normal
-            padding-right:3px
+            font-style:normal;
+            padding-right:3px;
         }
         span{
             font-size: 0.119rem;
@@ -99,8 +104,8 @@ export const Container=styled.div`
         font-size: .11rem;
         color: #999;
         text-decoration: line-through;
-        flex:1
-        padding-left:4px
+        flex:1;
+        padding-left:4px;
         padding-top:4px
 
     }

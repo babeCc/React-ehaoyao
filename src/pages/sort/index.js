@@ -1,18 +1,26 @@
 import React from "react"
 import { Header, Container } from "./styled"
 import { Icon } from 'antd';
-
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+@withRouter
+@connect(mapStateToProps, mapDispatchToProps)
 class Sort extends React.Component {
+    constructor() {
+        super()
+        this.activeIndex = 0;
+       
+    }
     render() {
+        let { list } = this.props;
+       
         return (
             <div>
-                {/* <Header bg="yellow">猫眼电影</Header>
-                <MovieHeader bg="pink">千锋教育</MovieHeader>
-                <SearchInput value="请输入内容" onChange={this.handleChange.bind(this)}/>
-                <Container/> */}
+
                 <Header>
-                    <Icon type="left" />
-                    <div>
+                    <Icon type="left" onClick={this.handleBack.bind(this)} />
+                    <div onClick={this.handleToSearch.bind(this)}>
                         <Icon type="search" />
                         <span>请输入药品名称或症状</span>
                     </div>
@@ -21,110 +29,48 @@ class Sort extends React.Component {
                     <div className="category-wrapper">
                         <div className="navleft">
                             <ul>
-                                <li>中西药品</li>
-                                <li>中西药品</li>
-                                <li>中西药品</li><li>中西药品</li>
-                                <li>中西药品</li>
+                                {
+                                    list.map((item, index) => (
+                                        <li key={index} id={item.cid} onClick={this.handleActive.bind(this, index)}
+                                            className={index == this.activeIndex ? "active" : "" }
+                                           
+                                        >{item.name}</li>
+                                    ))
+                                }
                             </ul>
                         </div>
                         <div className="subject bg">
-                            <div className="label-list">
-                                <a href="">补益用药</a>
-                                <a ref="">补益用药</a>
-                                <a ref="" >补益用药</a>
-                                <a ref="" >补益用药</a>
-                                <a ref="">补益用药</a>
-                                <a ref="">补益用药</a>
+                            <div>
+                                <div className="label-list">
+                                    {
+                                        list[this.activeIndex].list.map((item) => (
+                                            <a href={"#sort#"+item.cid} key={item.cid} >{item.name}</a>
+                                        ))
+                                    }
+                                </div>
                             </div>
-                            <dl>
-                                <dt>补益用药</dt>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                
-                            </dl>
-                            <dl>
-                                <dt>补益用药</dt>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                
-                            </dl>
-                            <dl>
-                                <dt>补益用药</dt>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                <dd>
-                                    <img src="http://image.qumaiyao.com/mogfile/onimage/2017081415542181DE5E392BD1F2DA27DE62AED3A52DBC.jpg" alt=""/>
-                                    <span>补气养血</span>
-                                </dd>
-                                
-                            </dl>
+
+                            {
+                                list[this.activeIndex].list.map((item, index) => (
+                                    <dl id={"sort#"+item.cid} key={item.cid} >
+                                        <dt>{item.name}</dt>
+                                        {
+                                            item.list.map((item, index) => (
+                                                <dd key={item.cid} id={item.cid} onClick={this.handleToList.bind(this,list[this.activeIndex].cid,item.cid)}>
+                                                    <img src={"http://image.qumaiyao.com/" + item.imageUrl}></img>
+                                                    <span>{item.name}</span>
+                                                </dd>
+                                            ))
+                                        }
+                                    </dl>
+                                ))
+                            }
+
 
                         </div>
-                       
+
                         <Icon type="vertical-align-top" />
-                       
+
                     </div>
 
                 </Container>
@@ -132,8 +78,25 @@ class Sort extends React.Component {
             </div>
         )
     }
-    handleChange() {
+   handleToList(type,detail){
+      
 
+        this.props.history.push("/list/c"+type+"-s"+detail)
+       
+   }
+    handleToSearch() {
+        this.props.history.push("./search");
+    }
+    handleBack() {
+        this.props.history.goBack();
+    }
+    handleActive(index) {
+        console.log(index)
+        this.activeIndex = index;
+        this.forceUpdate()
+    }
+    componentDidMount() {
+       
     }
 }
 

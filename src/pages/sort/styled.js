@@ -54,7 +54,13 @@ export const Container = styled.div`
     top: 0.38rem;
     bottom: 0.38rem;
     height:100%;
-    
+    .active{
+        background-color: #fff;
+        border-right-color: #fff !important ;
+        border-left:solid 3px #ff344d  !important;
+        color: #ff344d;
+        
+    }
     .category-wrapper{
         height:100%;
         display:flex;
@@ -76,7 +82,7 @@ export const Container = styled.div`
         border-bottom: 1px solid #e5e5e5;
     }
     .subject{
-        flex:1
+        flex:1;
         font-size:0.1rem;
         padding-top: .04rem;
         height:auto;
@@ -139,6 +145,7 @@ export const Container = styled.div`
         text-align:center;
         float:left;
         padding-top: .1rem;
+        margin:0;
     }
     dd img{
         margin: 0 .14rem;
