@@ -5,9 +5,13 @@ export const doctorAction = (coonType,cityId)=>{
     let doctorAsyncAction = createAction(doctorType,(data)=>data);
    
     return async (dispatch)=>{
-        let data = await doctorApi(coonType,cityId);
+        if(!localStorage.getItem("doctors")){
+            let data = await doctorApi(coonType,cityId);
+            dispatch(doctorAsyncAction(data))
+        }
+       
         
-        dispatch(doctorAsyncAction(data))
+       
     }
 }
 

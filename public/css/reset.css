@@ -23,7 +23,6 @@ li {
     list-style: none;
 }
 
-<<<<<<< HEAD
 a {
     text-decoration: none;
 }
@@ -34,20 +33,16 @@ img {
     vertical-align: top;
     border: none;
 }
-=======
 body { color:#333; font:10px "SimSun","宋体","Arial Narrow",HELVETICA; background:#fff;}
->>>>>>> eae797279e9801d746c83c202ee4eacce0c576a5
 
 input {
     outline: none;
 }
 
-<<<<<<< HEAD
 html {
     font-size: 31.25vw;
     height: 100%;
-=======
-html{font-size:31.25vw;}
+}
 
 .ell {
     text-overflow: ellipsis;
@@ -96,9 +91,8 @@ html{font-size:31.25vw;}
 .pt{
     border-bottom: 1px solid #e5e5e5;
 }
->>>>>>> eae797279e9801d746c83c202ee4eacce0c576a5
 
-}
+
 
 body {
     height: 100%;

@@ -1,10 +1,19 @@
 import React, { Fragment } from "react"
 import { Icon } from 'antd';
 import { Header, Container,Footer } from "./styled"
+import{withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {mapStateToProps,mapDispatchToProps} from "./mapStore";
+@connect(mapStateToProps,mapDispatchToProps)
 
-
+@withRouter
 class Detail extends React.Component {
+    constructor(){
+        super()
+    }
     render() {
+        let {info}  = this.props;
+        console.log(info);
         return (
             <Fragment>
                 <Header>
@@ -27,12 +36,12 @@ class Detail extends React.Component {
                         <div className="main-title">
                             <p>
                                 <i>¥</i>
-                                699.
+                                {info.price}.
                             <span>00</span>
                             </p>
                             <p>
                                 <i>¥</i>
-                                200.00
+                               {info.oldPrice}
                         </p>
                             <p>
                                 <Icon type="file-text" style={{ fontSize: '16px', }} />
@@ -45,21 +54,21 @@ class Detail extends React.Component {
 
                         </div>
                         <div className="main-info">
-                            <p><span>自营</span>同仁堂 阿胶(铁盒) 250g</p>
-                            <h5>不含辅料及礼品袋</h5>
+                             <p><span>自营</span>{info.goodsName}</p>
+                            <h5>{info.brief}</h5>
                         </div>
 
                     </div>
                     <div className="spec-info pd">
                         <span>已选</span>
-                        <span>同仁堂 阿胶250g</span>
+                            <span>{info.spec}</span>
                     </div>
                     <div className="recommend bg">
                         <p className="bg">相关推荐</p>
                         <div className="recommend-item bg">
                             <img src="http://image.qumaiyao.com/data/goodscenter/imges/set_meal_copy_41982/ff80808166f8265e01672ef9a5da1f3a_zfx_small0.jpg" alt="" />
                             <div>
-                                <h5>免费熬胶)同仁堂 阿胶 铁盒 250g</h5>
+                                <h5></h5>
                                 <i>规格：250g</i>
                                 <p>¥<span>699.</span>00</p>
 
@@ -120,17 +129,10 @@ class Detail extends React.Component {
                             </ul>
                             <h4>
                                 <br/>
-                                请按药品说明书或者在药师指导下购买和使用
+                             
                             </h4>
-                            <ul>
-                                <li>
-                                    <img src="http://img01.img.ehaoyao.com/data/goodscenter/imges/manager/DZG083255G_232955/20181025095241_734_gw_025.jpg" alt=""/>
-                                </li>
-                            </ul>
-                            <ul>
-                                <li>
-                                    <img src="../../../public/img/16eb8379164872b798320a48f717a38.jpg" alt=""/>
-                                </li>
+                            <ul className="HTML" dangerouslySetInnerHTML={{__html:info.imageTexts}}>
+                             
                             </ul>
 
                         </div>
@@ -160,6 +162,11 @@ class Detail extends React.Component {
                 </Footer>
             </Fragment>
         )
+    }
+    componentDidMount(){
+        let{groupId} = this.props.match.params;
+        
+        this.props.handleGetDetailData(groupId);
     }
 }
 export default Detail

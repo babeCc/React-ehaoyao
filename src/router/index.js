@@ -6,13 +6,10 @@ import {
     Cart,
     Mine,
     Login,
-<<<<<<< HEAD
     Activity,
-    Seacrh
-=======
+    Seacrh,
     Detail,
     Sort,
->>>>>>> eae797279e9801d746c83c202ee4eacce0c576a5
 } from "pages"
 
 
@@ -64,7 +61,16 @@ export const TabBarRoute = [
         },
         title:"我的",
         icon:"\ue659"
-    }
+    },
+    {
+        path:"/list/:link",
+        component:List,
+        meta:{
+            flag:true
+        },
+        title:"",
+        icon:""
+    },
 ];
 
 
@@ -72,7 +78,6 @@ export const NoTabBarRoute = [
     {
         path:"/login",
         component:Login,
-<<<<<<< HEAD
         meta:{}
     },
     {
@@ -93,32 +98,16 @@ export const NoTabBarRoute = [
         meta:{}
             
     },
-       
     
-=======
-        meta:{},
-        title:"登录",
-        icon:""
-    },
     {
-        path:"/detail",
+        path:"/detail/:groupId",
         component:Detail,
         meta:{
-            flag:true
+           
         },
-        title:"详情",
-        icon:""
+       
     },
-    {
-        path:"/list",
-        component:List,
-        meta:{
-            flag:true
-        },
-        title:"",
-        icon:""
-    },
->>>>>>> eae797279e9801d746c83c202ee4eacce0c576a5
+    
 ];
 
 

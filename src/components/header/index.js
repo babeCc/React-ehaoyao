@@ -22,7 +22,7 @@ class Header extends React.Component{
                         <div className="menu_list">
                             <ul>
                                 <a href="#/home" style={{color:"#000"}}><li>首页</li></a>
-                                <a  href="#/list" style={{color:"#000"}}><li>分类</li></a>
+                                <a  href="#/sort" style={{color:"#000"}}><li>分类</li></a>
                                 <a  href="#/mine" style={{color:"#000"}}><li>我的</li></a>
                                 <a  href="#/search" style={{color:"#000"}}> <li>搜索</li></a>
                             </ul>

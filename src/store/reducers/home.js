@@ -9,6 +9,7 @@ export default handleActions({
         let homeState = JSON.parse(JSON.stringify((state)))
           
             homeState.home_goods=action.payload.data.homepageActivityList;
+            localStorage.setItem("activity",JSON.stringify(action.payload.data.homepageActivityList))
             return  homeState;
     }
 },defaultState)

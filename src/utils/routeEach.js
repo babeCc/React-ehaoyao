@@ -8,7 +8,7 @@ export default (routes) => {
         if (route.meta.flag) {
                     
             return (
-                <Layout path={route.path}>
+                <Layout path={route.path} key={route.path}>
                     <route.component />
                 </Layout>
             )
@@ -34,17 +34,17 @@ export default (routes) => {
 
 
     function childrenMap(childNodes) {
-        return <Route path={childNodes.path} render={() => {
+        return <Route path={childNodes.path} key={childNodes.path} render={() => {
             return (
                 <Fragment>
-                    <Route component={childNodes.component} />
+                    <Route component={childNodes.component} key={childNodes.path} />
                     <Switch>
                         {
                             childNodes.children.map((child) => {
                                 if (child.children) {
                                     return childrenMap(child);
                                 } else {
-                                    return <Route path={child.path} render={() => {
+                                    return <Route path={child.path} key={child.path} render={() => {
                                         return isLogin(child)
                                     }} />
                                 }
@@ -62,7 +62,8 @@ export default (routes) => {
         if (route.children) {
             return childrenMap(route);
         } else {
-            return <Route path={route.path} key={route.path} render={() => {
+            let index=0;
+            return <Route path={route.path} key={index++} render={() => {
                 return isLogin(route)
             }} />
         }

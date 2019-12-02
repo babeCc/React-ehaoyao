@@ -6,10 +6,12 @@ import {createAction} from "redux-actions";
 export const homeAsyncAction  = (connType,cityId)=>{
     let homeAction = createAction(homeAsync,(data)=>data)
             return async (dispatch)=>{
-            
+           if(!localStorage.getItem("activity")){
             let data = await activityApi();
            
             dispatch(homeAction(data));
+           }
+         
         }
        
      
