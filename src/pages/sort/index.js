@@ -3,6 +3,7 @@ import { Header, Container } from "./styled"
 import { Icon } from 'antd';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import  BscrollY from "common/ScrollY";
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 @withRouter
 @connect(mapStateToProps, mapDispatchToProps)
@@ -14,10 +15,10 @@ class Sort extends React.Component {
     }
     render() {
         let { list } = this.props;
-       
+      
         return (
             <div>
-
+                
                 <Header>
                     <Icon type="left" onClick={this.handleBack.bind(this)} />
                     <div onClick={this.handleToSearch.bind(this)}>
@@ -43,7 +44,11 @@ class Sort extends React.Component {
                             <div>
                                 <div className="label-list">
                                     {
+<<<<<<< HEAD
                                         (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item) => (
+=======
+                                      (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item) => (
+>>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
                                             <a href={"#sort#"+item.cid} key={item.cid} >{item.name}</a>
                                         ))
                                     }
@@ -51,7 +56,11 @@ class Sort extends React.Component {
                             </div>
 
                             {
+<<<<<<< HEAD
                                 (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item, index) => (
+=======
+                                (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item) => (
+>>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
                                     <dl id={"sort#"+item.cid} key={item.cid} >
                                         <dt>{item.name}</dt>
                                         {
@@ -78,6 +87,7 @@ class Sort extends React.Component {
             </div>
         )
     }
+    
    handleToList(type,detail){
       
 
@@ -91,12 +101,16 @@ class Sort extends React.Component {
         this.props.history.goBack();
     }
     handleActive(index) {
-        console.log(index)
+       
         this.activeIndex = index;
         this.forceUpdate()
     }
     componentDidMount() {
        this.props.handleGetList()
+<<<<<<< HEAD
+=======
+      
+>>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
     }
 }
 

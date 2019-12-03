@@ -43,6 +43,7 @@ export const Container = styled.div`
     height:auto;
     overflow:auto;
     font-size:0.12rem;
+    background:#ededed;
     p{
         margin-bottom:0;
     }
@@ -53,7 +54,7 @@ export const Container = styled.div`
         z-index:999
     }
     .navTop ul{
-        z-index:999
+        z-index:999;
         width:100%;
         position:fixed;
         top:0.38rem;

@@ -10,6 +10,7 @@ export default handleActions({
         let listState = JSON.parse(JSON.stringify(state));
         
         listState.list = action.payload.data;
+        
         localStorage.setItem("list",JSON.stringify(action.payload.data));
         return listState
     }

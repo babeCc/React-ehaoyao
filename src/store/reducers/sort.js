@@ -10,7 +10,8 @@ export default  handleActions({
     [sortAsync]:(state,action)=>{
         var sortState = JSON.parse(JSON.stringify(state));
          sortState.data = action.payload;
-        sortState.goods = action.payload.data.goodsList;
+         
+        sortState.goods = [...sortState.goods,...action.payload.data.goodsList];
         return sortState;
     }
 },defaultState)

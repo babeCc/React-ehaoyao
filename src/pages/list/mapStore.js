@@ -7,6 +7,7 @@ export const mapStateToProps = (state)=>({
 
 export const mapDispatchToProps = (dispatch)=>({
    
+<<<<<<< HEAD
     handleGetLink(link){
         dispatch(linkAsyncAction(link))
     },
@@ -14,6 +15,11 @@ export const mapDispatchToProps = (dispatch)=>({
         dispatch(AddProAction(obj))
         
 
+=======
+    handleGetLink(link,page){
+       
+        dispatch(linkAsyncAction(link,page))
+>>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
     }
     
 })

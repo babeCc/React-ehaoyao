@@ -60,16 +60,28 @@ export const listApi = (connType = "5", cityId = "027") => Http.get({
 
 //功能很多的页面 
 
+<<<<<<< HEAD
 export const sortApi = (id = 845) => Http.get({
     url: "/api/mds/api/app/apiv3_0/GoodsListByKeywordPc.json",
     data: {
         isSelf: "",
+=======
+export const sortApi = (id=845,page=1) =>Http.get({
+    url:"/api/mds/api/app/apiv3_0/GoodsListByKeywordPc.json",
+    data:{
+        isSelf:"",
+>>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
         isStore: 0,
         type: 1,
         descs: "",
         cid: id,
+<<<<<<< HEAD
         searchGoodsBrief: "",
         page: 1,
+=======
+        searchGoodsBrief:"", 
+        page: page,
+>>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
         rows: 10,
         brandId: "",
         plngLat: "114.19683,30.54626",
@@ -100,7 +112,24 @@ export const detailApi = (goodsId) => Http.get({
         cityId: "027"
     }
 })
+//领券
+export const ticketApi = ()=>Http.get({
+    url:"/api/mds/api/app/apiv3_0/getGivingCoupons.json",
+    data:{
+        pharmacyId: 25,
+        coonType: 5
+    }
+})
 
+export const getApi = (Id) =>Http.get({
+    url:"/api/mobile/memberCoupon/getMemberCouponByCouponId.json",
+    data:{
+        couponId:Id,
+        coonType:5
+    }
+})
+
+<<<<<<< HEAD
 //购物车推荐
 export const cartCommandApi = (page_no=1) => Http.post({
     url: "/front_api/recommend/order-cart",
@@ -117,3 +146,21 @@ export const cartCommandApi = (page_no=1) => Http.post({
 })
 
 
+=======
+export const ticketListApi = (id) =>Http.get({
+    url:"api/mds/api/app/apiv3_0/goodsPmtList.json",
+    data:{
+        couponId: id,
+        pharmacyId: 25,
+        page: 1,
+        rows: 5,
+        type: 1,
+        descs:"",
+        longitude: 114.19683,
+        latitude: 30.54626,
+        isB2cGoods: 1,
+        coonType: 5,
+        cityId: "027"
+    }
+})
+>>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
