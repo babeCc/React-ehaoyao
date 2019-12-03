@@ -27,7 +27,10 @@ class Detail extends React.Component {
                     </div>
                     <Icon type="search" style={{ fontSize: '16px', }} onClick={this.handleToSearch.bind(this)} />
                     <Icon type="dash" style={{ fontSize: '20px', }} onClick={this.handleClick.bind(this)} />
-                    <div className="header_box" style={{display:this.flag?"block":"none"}}>
+                    
+                </Header>
+                <Container>
+                <div className="header_box" style={{display:this.flag?"block":"none"}}>
                         <div className="mask" onClick={this.handleClick.bind(this)}></div>
                         <div className="menu_list">
                             <ul>
@@ -38,8 +41,6 @@ class Detail extends React.Component {
                             </ul>
                         </div>
                     </div>
-                </Header>
-                <Container>
                     <div className="gallery-container">
                         <div className="bannerimg">
                             <img src={(info.bigPic?info.bigPic:"1,2").split(",")[0]} alt="" />

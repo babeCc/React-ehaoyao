@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 export const Header = styled.div`
+    
     display:flex;
     justify-content:space-around;
     align-items: center;
@@ -11,6 +12,42 @@ export const Header = styled.div`
     line-height:0.38rem;
     color:white;
     font-size:.14rem;
+    
+    .anticon-left{
+        padding-right:0.1rem;
+    }
+    .anticon-search{
+        margin-right:-0.1rem;
+        
+    }
+    .anticon-search{
+        font-size:15px;
+
+    }
+    &>div{
+        display:flex;
+        align-items: center;
+        justify-content:space-around;
+        width:1.8rem;
+        padding-left:30px;
+    }
+    span{
+        font-size:0.136rem;
+
+    }
+    .anticon-dash{
+        margin-right:8px;
+        outline:none;
+    }
+`
+export const Container=styled.div`
+    position: absolute;
+    width: 100%;
+    top: 0.38rem;
+    bottom: 0.38rem;
+    height:auto;
+    overflow:auto;
+    background-color: #f5f5f5;
     .header_box{
         .mask{
             background:rgba(0,0,0,.5);
@@ -23,7 +60,7 @@ export const Header = styled.div`
         }
         .menu_list{
             
-            top:.56rem;
+            top:.2rem;
             position:absolute;
             right:.05rem;
             z-index:200;
@@ -51,40 +88,6 @@ export const Header = styled.div`
            
         }
     }
-    .anticon-left{
-        padding-right:0.1rem;
-    }
-    .anticon-search{
-        margin-right:-0.1rem;
-        
-    }
-    .anticon-search{
-        font-size:15px;
-
-    }
-    &>div{
-        display:flex;
-        align-items: center;
-        justify-content:space-around;
-        width:1.8rem;
-        padding-left:30px;
-    }
-    span{
-        font-size:0.136rem;
-
-    }
-    .anticon-dash{
-        margin-right:8px;
-    }
-`
-export const Container=styled.div`
-    position: absolute;
-    width: 100%;
-    top: 0.38rem;
-    bottom: 0.38rem;
-    height:auto;
-    overflow:auto;
-    background-color: #f5f5f5;
     .HTML{
         img{
             width:3.2rem;

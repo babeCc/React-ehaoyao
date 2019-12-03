@@ -14,8 +14,8 @@ class TicketList extends React.Component {
     }
     render() {
         let {data} = this.props;
-        let goodsList = data.goodsList;
-        console.log(goodsList)
+       
+        
         let {name} = this.props.match.params;
         console.log(data)
         return (
@@ -26,7 +26,7 @@ class TicketList extends React.Component {
                         <div className="search">
                             <img src="./public/img/lsearch.png" alt="" />
                         </div>
-                        <input type="text" placeholder="请输入药品或症状" />
+                        <input type="text" placeholder="请输入药品或症状" onClick={this.handleToSearch.bind(this)} />
                     </div>
                     <div></div>
                 </div>
@@ -39,7 +39,7 @@ class TicketList extends React.Component {
                 <div className="content">
                     <ul>
                       {(data.goodsList?data.goodsList:[]).map((item)=>(
-                          <li key={item.goodsId}>
+                          <li key={item.goodsId} onClick={this.handleToDetail.bind(this,item.groupId)}>
                           <div className="img"><img src={"http://image.qumaiyao.com/"+item.bigPic} alt=""/></div>
                           <div className="right">
                               <p className="product-name">
@@ -62,7 +62,7 @@ class TicketList extends React.Component {
                         
                        
                     </ul>
-                   <div style={{display:data.pagination.total?"none":"block"}}>
+                   <div style={{display:(data.goodList?data.goodList:[]).length?"block":"none"}}>
                       <div className="noresult" >抱歉没找到{name}相关的商品</div>
                     <a href="">咨询药师</a>
                     </div>
@@ -71,12 +71,19 @@ class TicketList extends React.Component {
             </TicketListContainer>
         )
     }
+    handleToDetail(id){
+        this.props.history.push("/detail/"+id);
+    }
+    handleToSearch(){
+        this.props.history.push('/search')
+    }
     handleBack(){
         this.props.history.goBack()
     }
     componentDidMount(){
         let {id} = this.props.match.params;
         this.props.handleGetData(id)
+    
     }
 }
 
