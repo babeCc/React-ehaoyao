@@ -7,5 +7,10 @@ module.exports = (app)=>{
         pathRewrite:{
             "^/ajax":""
         }
+    })),
+    app.use("/front_api",proxy({
+        target:"http://m.ehaoyao.com",
+        changeOrigin:true,
+       
     }))
 }

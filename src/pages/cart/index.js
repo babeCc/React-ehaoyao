@@ -3,21 +3,32 @@ import { Icon } from 'antd';
 // import { Header } from "../detail/styled";
 import { Header, Container } from "./styled"
 import { List, Checkbox, Flex } from 'antd-mobile';
-const CheckboxItem = Checkbox.CheckboxItem;
 
+import { withRouter } from "react-router-dom";
+import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+import { connect } from "react-redux";
+@connect(mapStateToProps, mapDispatchToProps)
+@withRouter
 
 class Cart extends React.Component {
-    onChange = (val) => {
-        console.log(val);
+    constructor() {
+        super()
     }
     render() {
+
+        const CheckboxItem = Checkbox.CheckboxItem;
+        let { list, countNum, countPrice, all, num } = this.props;
+
+        // console.log(list)
         return (
+
             <Fragment>
+
                 <Header>
                     <Icon type="left" />
                     <div>
                         <span>购物车
-                            <i>5</i>
+                                <i>{num}</i>
                         </span>
                         <span>需求清单</span>
                     </div>
@@ -28,7 +39,7 @@ class Cart extends React.Component {
                         <div className="Top bg pt">
                             <span className="selectAll">
                                 {/* <Icon type="check" style={{ fontSize: '10px', }} /> */}
-                                <CheckboxItem onChange={() => this.onChange(0)} style={{ fontSize: '10px', }}>
+                                <CheckboxItem checked={all} onChange={() => this.onChange()} style={{ fontSize: '10px', }}>
 
                                 </CheckboxItem>
                             </span>
@@ -41,64 +52,40 @@ class Cart extends React.Component {
                         </div>
                         <div className="mainCart bg">
                             <ul>
-                                <li>
-                                    <span className="selectEach">
-                                        <CheckboxItem onChange={() => this.onChange(0)} style={{ fontSize: '10px', }}>
+                                {
+                                    (list ? list : []).map((item) => (
+                                        <li key={item.id}>
+                                            <span className="selectEach">
+                                                <CheckboxItem checked={item.flag} onChange={() => this.eachChange(item.flag, item.id)} style={{ fontSize: '10px', }}>
 
-                                        </CheckboxItem>
-                                    </span>
+                                                </CheckboxItem>
+                                            </span>
 
-                                    <img src="http://image.qumaiyao.com/data/goodscenter/imges/set_meal_copy_64690/000000006368978e01636cd08a390384_zfx_small0.jpg" alt="" />
-                                    <div className="right">
-                                        <h2 className="to">【儿童套餐】迪巧 儿童维D钙咀嚼片60片+振海康红外线电子体温计HTD8813C 耳温枪</h2>
-                                        <h3>规格: 60片+HTD8813C</h3>
+                                            <img src="http://image.qumaiyao.com/data/goodscenter/imges/set_meal_copy_64690/000000006368978e01636cd08a390384_zfx_small0.jpg" alt="" />
+                                            <div className="right">
+                                                <h2 className="to">{item.name}</h2>
+                                                <h3>{item.type}</h3>
 
-                                        <div className="number">
-                                            <p>¥<span>149</span></p>
-                                            <div>
-                                                <div className="pri">
-                                                    <Icon type="minus" style={{ fontSize: '10px', color: '#cccccc' }} />
+                                                <div className="number">
+                                                    <p>¥<span>{item.price}</span></p>
+                                                    <div>
+                                                        <div className="pri">
+                                                            <Icon type="minus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.reduceHandle.bind(this, item.id)} />
 
-                                                    <input type="text" defaultValue="1" />
-                                                    <Icon type="plus" style={{ fontSize: '10px', color: '#cccccc' }} />
+                                                            <input type="text" value={item.num} onChange={this.handleChangeNum.bind(this, item.id)} />
+                                                            <Icon type="plus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.addHandle.bind(this, item.id)} />
 
+                                                        </div>
+                                                        <Icon type="rest" style={{ fontSize: '18px', color: 'rgb(154, 154, 154)' }}  />
+                                                    </div>
                                                 </div>
-                                                <Icon type="rest" style={{ fontSize: '18px', color: 'rgb(154, 154, 154)' }} />
+
                                             </div>
-                                        </div>
 
-                                    </div>
+                                        </li>
 
-                                </li>
-                                <li>
-                                    <span className="selectEach">
-                                        <CheckboxItem onChange={() => this.onChange(0)} style={{ fontSize: '10px', }}>
+                                    ))}
 
-                                        </CheckboxItem>
-                                    </span>
-
-                                    <img src="http://image.qumaiyao.com/data/goodscenter/imges/set_meal_copy_64690/000000006368978e01636cd08a390384_zfx_small0.jpg" alt="" />
-                                    <div className="right">
-                                        <h2 className="to">【儿童套餐】迪巧 儿童维D钙咀嚼片60片+振海康红外线电子体温计HTD8813C 耳温枪</h2>
-                                        <h3>规格: 60片+HTD8813C</h3>
-
-                                        <div className="number">
-                                            <p>¥<span>149</span></p>
-                                            <div>
-                                                <div className="pri">
-                                                    <Icon type="minus" style={{ fontSize: '10px', color: '#cccccc' }} />
-
-                                                    <input type="text" defaultValue="1" />
-                                                    <Icon type="plus" style={{ fontSize: '10px', color: '#cccccc' }} />
-
-                                                </div>
-                                                <Icon type="rest" style={{ fontSize: '18px', color: 'rgb(154, 154, 154)' }} />
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </li>
 
                             </ul>
                         </div>
@@ -188,15 +175,44 @@ class Cart extends React.Component {
                     <div className="cart-footer">
                         <p>
                             合计
-                        <span>￥518.50</span>
+                                <span>￥{countPrice}</span>
                         </p>
                         <h5>
-                            结算(5)
+                            结算({countNum})
                         </h5>
                     </div>
                 </Container>
             </Fragment>
         )
     }
+    componentDidMount() {
+        this.props.handleSetFlag()
+        // console.log(this.props.list)
+    }
+
+    addHandle(id) {
+        this.props.handleAddPro(id)
+
+    }
+    reduceHandle(id) {
+        this.props.handleReducePro(id)
+    }
+    handleChangeNum(id, e) {
+        let val = e.target.value;
+        this.props.handleNumChangePro(val, id)
+        // console.log(e.target)
+
+    }
+    onChange = () => {
+
+        this.props.handleAllselect()
+    }
+    eachChange(flag, id) {
+        console.log(flag, id);
+        this.props.handleEachSelect(id)
+
+
+    }
+
 }
 export default Cart

@@ -71,10 +71,12 @@ export const TabBarRoute = [
         title:"",
         icon:""
     },
+    
 ];
 
 
 export const NoTabBarRoute = [
+    
     {
         path:"/login",
         component:Login,

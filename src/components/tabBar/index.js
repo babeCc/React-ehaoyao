@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import {TabBarRoute} from "router"
 import {TabBarContainer} from "./styled"
+
 import {withRouter} from "react-router-dom"
+import { mapStateToProps, mapDispatchToProps } from "./mapStore";
+import { connect } from "react-redux";
+@connect(mapStateToProps, mapDispatchToProps)
+
 @withRouter
 class TabBar extends Component {
     constructor(){
@@ -10,11 +15,12 @@ class TabBar extends Component {
       
     }
     render(){
-        let {path}=this.props;
+        let {path,num}=this.props;
         return(
             <TabBarContainer>
                 <div className="home_footer">
                     <ul>
+        <i>{JSON.parse(localStorage.getItem("num"))}</i>
                         {
                             TabBarRoute.map((item)=>(
                             <li key={item.title} onClick={this.handleTo.bind(this,item.path)}

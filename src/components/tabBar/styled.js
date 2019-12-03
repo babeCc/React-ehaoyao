@@ -25,6 +25,19 @@ export const TabBarContainer = styled.div`
             }
         
        }
+       ul>i{
+           position:absolute;
+           bottom:25px;
+           background:#ff344d;
+            color: white;
+            width: .13rem;
+            height: .13rem;
+            line-height: .13rem;
+            font-size: .1rem;
+            font-style: normal;
+            border-radius:50%;
+            right:30%;
+       }
 
     }
 

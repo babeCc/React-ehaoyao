@@ -30,7 +30,7 @@ class Sort extends React.Component {
                         <div className="navleft">
                             <ul>
                                 {
-                                    list.map((item, index) => (
+                                    (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item, index) => (
                                         <li key={index} id={item.cid} onClick={this.handleActive.bind(this, index)}
                                             className={index == this.activeIndex ? "active" : "" }
                                            
@@ -43,7 +43,7 @@ class Sort extends React.Component {
                             <div>
                                 <div className="label-list">
                                     {
-                                        list[this.activeIndex].list.map((item) => (
+                                        (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item) => (
                                             <a href={"#sort#"+item.cid} key={item.cid} >{item.name}</a>
                                         ))
                                     }
@@ -51,7 +51,7 @@ class Sort extends React.Component {
                             </div>
 
                             {
-                                list[this.activeIndex].list.map((item, index) => (
+                                (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item, index) => (
                                     <dl id={"sort#"+item.cid} key={item.cid} >
                                         <dt>{item.name}</dt>
                                         {
@@ -96,7 +96,7 @@ class Sort extends React.Component {
         this.forceUpdate()
     }
     componentDidMount() {
-       
+       this.props.handleGetList()
     }
 }
 
