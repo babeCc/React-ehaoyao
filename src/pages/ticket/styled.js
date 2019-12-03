@@ -4,7 +4,7 @@ export const TicketContainer = styled.div`
     overflow:hidden;
     font-size:12px;
     padding-top:.37rem;
-    
+    background:#ededed;
     .coupon-code-box{
         display: flex;
         
@@ -38,12 +38,12 @@ export const TicketContainer = styled.div`
         ul{
         li{
             display: flex;
-            margin-bottom: .04rem;
+            margin-bottom: .1rem;
             width: 100%;
             height: .78rem;
             background-color: #fff;
             border-radius: .04rem;
-            overflow: hidden;
+            overflow:hidden;
             .left{
                 border-right:5px dashed #ededed;
                 padding: .07rem .13rem;
@@ -121,7 +121,7 @@ export const TicketContainer = styled.div`
                     }
                 }
                  .btn-get {
-                     display:none;
+                    
                         margin: .07rem auto 0;
                         width: .6rem;
                         color: #fff;
@@ -140,7 +140,8 @@ export const TicketContainer = styled.div`
                     text-align: center;
                     font-size: .1rem;
                  
-                    margin: .11rem auto 0;
+                  display:flex;
+                  justify-content:space-between;
                    
                     color: #ff344d;
                     font-weight: 300;
@@ -153,13 +154,15 @@ export const TicketContainer = styled.div`
                         border-radius:50%;
                        padding:0 .03rem;
                        text-align:center;
-                       margin-left:.02rem;
+                      
+                      
+                        
                     }
                 }
                 }
             }
         }
-        }
-    }
+        
+    
     
 `

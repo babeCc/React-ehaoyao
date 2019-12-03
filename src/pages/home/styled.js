@@ -142,13 +142,13 @@ export const HomeContentContainer = styled.div`
                 display: none;
             }
             ul{
-               
+                width:11.4rem;
                 height:140px;
                 display:flex;
                 justify-content:space-between;
                 align-items:center;
                 li{
-                  
+                 
                     margin-left:.05rem;
                     margin-right:.1rem;
                    text-align:center;

@@ -1,13 +1,18 @@
 import React,{Fragment} from "react"
 import {Icon} from "antd"
 import {Header,Container} from "./styled"
+import {connect} from "react-redux";
 
+import {withRouter} from "react-router-dom";
+
+
+@withRouter
 class Login extends React.Component{
     render(){
         return(
             <Fragment>
                 <Header>
-                    <Icon type="left" />
+                    <Icon type="left" onClick={this.handleBack.bind(this)} />
                     <div>
                         会员登录
                     </div>
@@ -23,7 +28,7 @@ class Login extends React.Component{
                     </p>
                         
                     </div>
-                    <button className="deng">登录</button>
+                    <button className="deng" >登录</button>
                     <h2>第三方登录</h2>
                     {/* <div className="login-third">
                         <img src="../../../public/img/_20191128201651.png" alt=""/>
@@ -33,6 +38,8 @@ class Login extends React.Component{
 
         )
     }
-
+    handleBack(){
+        this.props.history.goBack();
+    }
 }
 export default Login;

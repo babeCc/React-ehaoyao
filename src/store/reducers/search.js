@@ -13,7 +13,7 @@ import {goodsKeysAsync,seacrhAsync,inputValueAction} from "actions/home/homeActi
     [goodsKeysAsync]:(state,action)=>{
         var  searchState = JSON.parse(JSON.stringify(state));
             searchState.goodsKey=action.payload.data;
-
+            localStorage.setItem("goodsKey",JSON.stringify(action.payload.data))
             return searchState;
     },
     [seacrhAsync]:(state,action)=>{
