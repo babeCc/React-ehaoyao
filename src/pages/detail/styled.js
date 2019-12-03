@@ -11,6 +11,46 @@ export const Header = styled.div`
     line-height:0.38rem;
     color:white;
     font-size:.14rem;
+    .header_box{
+        .mask{
+            background:rgba(0,0,0,.5);
+            position:fixed;
+            top:.38rem;
+            left:0;
+            right:0;
+            bottom:0;
+            z-index:99;
+        }
+        .menu_list{
+            
+            top:.56rem;
+            position:absolute;
+            right:.05rem;
+            z-index:200;
+           
+            ul{
+            background:#fff;
+            border-radius:.05rem;
+            li{
+                padding:.1rem .5rem ;
+                border-bottom: 1px solid #c1c1c1;
+            }
+          }
+        }
+        .menu_list::before{
+                content:"";
+                z-index:200;
+                top:-0.2rem;
+                right:0;
+                right:.32rem;
+                position:absolute;
+                 width:0;
+                
+                border:solid 10px transparent;
+                border-bottom-color: #fff;
+           
+        }
+    }
     .anticon-left{
         padding-right:0.1rem;
     }
@@ -344,8 +384,11 @@ background:white;
         overflow:hidden;
         margin-bottom:0;
     }
-    
+    a{
+            color:#999;
+        }
     li{
+       
         cursor: pointer;
         border-right: 1px solid #e5e5e5;
         float: left;

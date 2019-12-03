@@ -10,34 +10,48 @@ import {mapStateToProps,mapDispatchToProps} from "./mapStore";
 class Detail extends React.Component {
     constructor(){
         super()
+        this.flag=false;
     }
     render() {
         let {info}  = this.props;
-        console.log(info);
+       
+      
         return (
             <Fragment>
                 <Header>
-                    <Icon type="left" />
+                    <Icon type="left" onClick={this.handleBack.bind(this)}/>
                     <div>
                         <span>商品</span>
                         <span>详情</span>
 
                     </div>
-                    <Icon type="search" style={{ fontSize: '16px', }} />
-                    <Icon type="dash" style={{ fontSize: '20px', }} />
+                    <Icon type="search" style={{ fontSize: '16px', }} onClick={this.handleToSearch.bind(this)} />
+                    <Icon type="dash" style={{ fontSize: '20px', }} onClick={this.handleClick.bind(this)} />
+                    <div className="header_box" style={{display:this.flag?"block":"none"}}>
+                        <div className="mask" onClick={this.handleClick.bind(this)}></div>
+                        <div className="menu_list">
+                            <ul>
+                                <a href="#/home" style={{color:"#000"}}><li>首页</li></a>
+                                <a  href="#/sort" style={{color:"#000"}}><li>分类</li></a>
+                                <a  href="#/mine" style={{color:"#000"}}><li>我的</li></a>
+                                <a  href="#/search" style={{color:"#000"}}> <li>搜索</li></a>
+                            </ul>
+                        </div>
+                    </div>
                 </Header>
                 <Container>
                     <div className="gallery-container">
                         <div className="bannerimg">
-                            <img src="http://ac01bt.img.file.ehaoyao.com/w/goods/img01/set_meal_copy_56426/000000005f48950d015f5b7ba78d0f75_zfx_big0-w.jpg" alt="" />
+                            <img src={(info.bigPic?info.bigPic:"1,2").split(",")[0]} alt="" />
                         </div>
                     </div>
                     <div className="menu-list">
                         <div className="main-title">
                             <p>
                                 <i>¥</i>
-                                {info.price}.
-                            <span>00</span>
+                                {info.price}
+                                <span>.00</span>
+                            
                             </p>
                             <p>
                                 <i>¥</i>
@@ -66,7 +80,7 @@ class Detail extends React.Component {
                     <div className="recommend bg">
                         <p className="bg">相关推荐</p>
                         <div className="recommend-item bg">
-                            <img src="http://image.qumaiyao.com/data/goodscenter/imges/set_meal_copy_41982/ff80808166f8265e01672ef9a5da1f3a_zfx_small0.jpg" alt="" />
+                            <img src={(info.bigPic?info.bigPic:"1,2").split(",")[0]} alt="" />
                             <div>
                                 <h5></h5>
                                 <i>规格：250g</i>
@@ -115,22 +129,10 @@ class Detail extends React.Component {
                         </div>
                     </div>
                     <div className="goods_2 bg">
-                        <div className="details-nav">
-                            <p>
-                                <span>为您推荐</span>
-                                <span>品牌专区</span>
-                            </p>
-                        </div>
+                     
                         <div className="details ">
-                            <ul>
-                                <li>
-                                    <img src="http://img01.img.ehaoyao.com/data/goodscenter/imges/set_meal_copy_1/8a8094216cf7514e016e4a0c66cd0ff5.jpg" alt="" />
-                                </li>
-                            </ul>
-                            <h4>
-                                <br/>
-                             
-                            </h4>
+                          
+                           
                             <ul className="HTML" dangerouslySetInnerHTML={{__html:info.imageTexts}}>
                              
                             </ul>
@@ -140,21 +142,26 @@ class Detail extends React.Component {
                 </Container>
                 <Footer>
                     <ul>
-                        <li>
+                        <a href="#home"><li>
                         <Icon type="home" style={{ fontSize: '20px', }}/>
                         首页
-                        </li>
+                        </li></a>
+                        <a href="#doctor">
                         <li>
                         <Icon type="user" style={{ fontSize: '20px', }}/>
                         咨询药师
                         </li>
+                        </a>
+                        <a href="#cart">
                         <li>
                         <Icon type="shopping-cart" style={{ fontSize: '20px', }}/>
                         购物车
                         </li>
+                        </a>
                         <li  className="addCart">
                             <span>加入购物车</span>
                         </li>
+                       
                         <li className="rightPerchase">
                             <span>立即购买</span>
                         </li>
@@ -163,10 +170,21 @@ class Detail extends React.Component {
             </Fragment>
         )
     }
+    handleClick(){
+        this.flag=!this.flag;
+        this.forceUpdate();
+    }
+    handleToSearch(){
+        this.props.history.push("/search");
+    }
+    handleBack(){
+        this.props.history.goBack();
+    }
     componentDidMount(){
         let{groupId} = this.props.match.params;
         
         this.props.handleGetDetailData(groupId);
+       
     }
 }
 export default Detail

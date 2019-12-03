@@ -6,7 +6,8 @@ export const mapStateToProps = (state)=>({
 
 export const mapDispatchToProps = (dispatch)=>({
    
-    handleGetLink(link){
-        dispatch(linkAsyncAction(link))
+    handleGetLink(link,page){
+       
+        dispatch(linkAsyncAction(link,page))
     }
 })

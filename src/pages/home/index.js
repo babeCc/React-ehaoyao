@@ -4,6 +4,7 @@ import { HomeHeaderContainer, HomeContainer, HomeContentContainer } from "./styl
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import {mapStateToProps,mapDispatchToProps} from "./mapStore";
+import BscrollCom from "../.././common/btrScroll";
 @connect(mapStateToProps,mapDispatchToProps)
   
 @withRouter
@@ -193,6 +194,7 @@ import {mapStateToProps,mapDispatchToProps} from "./mapStore";
                                             <div className="activity_more"onClick={this.handleToActivity.bind(this)}>更多</div> 
                                         </div>   
                                         <div className="activity_goods">
+                                        <BscrollCom>
                                             <ul  >
                                                 {
                                                home_goods.map((item)=>(
@@ -207,7 +209,7 @@ import {mapStateToProps,mapDispatchToProps} from "./mapStore";
                                                 }
                                           
                                             </ul>
-                                           
+                                            </BscrollCom> 
                                         </div>
                                         
                                     </div>

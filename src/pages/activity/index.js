@@ -3,8 +3,11 @@ import { ActivityContainer } from "./styled";
 import Header from "components/header";
 import { TimeDown } from "utils/timer";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
+
 import{mapStateToProps,mapDispatchToProps} from "./mapStore";
 @connect(mapStateToProps,mapDispatchToProps)
+@withRouter
 class Activity extends React.Component {
     constructor() {
         super()
@@ -33,7 +36,7 @@ class Activity extends React.Component {
                 <ul className="seckill-list">
                     {
                        goods.map((item)=>(
-                        <li key={item.goodsId}>
+                        <li key={item.goodsId} onClick={this.handleToDetail.bind(this,item.groupId)}>
                         <div className="img">
                             <img src={"http://image.qumaiyao.com/"+item.smallPic} alt="" />
                         </div>
@@ -63,6 +66,10 @@ class Activity extends React.Component {
             </ActivityContainer>
 
         )
+    }
+    handleToDetail(groupId){
+       
+        this.props.history.push("/detail/"+groupId)
     }
     componentDidMount() {
         this.props.handleActivityAsyncData()

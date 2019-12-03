@@ -7,7 +7,9 @@ import doctor from "./reducers/doctor";
 import search from "./reducers/search";
 import list from "./reducers/list";
 import sort from "./reducers/sort";
-import detail from "./reducers/detail"
+import detail from "./reducers/detail";
+import ticket from "./reducers/ticket";
+import ticketlist from "./reducers/ticketlist"
 const reducers = combineReducers({
     home ,
     activity,
@@ -15,7 +17,9 @@ const reducers = combineReducers({
     search,
     list,
     sort,
-    detail
+    detail,
+    ticket,
+    ticketlist
 })
 
 const store = createStore(reducers,composeWithDevTools(applyMiddleware(reduxThunk)))

@@ -10,6 +10,7 @@ import {
     Seacrh,
     Detail,
     Sort,
+    ticketList
 } from "pages"
 
 
@@ -62,19 +63,16 @@ export const TabBarRoute = [
         title:"我的",
         icon:"\ue659"
     },
-    {
-        path:"/list/:link",
-        component:List,
-        meta:{
-            flag:true
-        },
-        title:"",
-        icon:""
-    },
+
 ];
 
 
 export const NoTabBarRoute = [
+    {
+        path:"/ticketlist/:id/:name",
+        component:ticketList,
+        meta:{}
+    },
     {
         path:"/login",
         component:Login,
@@ -107,7 +105,15 @@ export const NoTabBarRoute = [
         },
        
     },
-    
+    {
+        path:"/list/:link",
+        component:List,
+        meta:{
+            flag:true
+        },
+        title:"",
+        icon:""
+    },
 ];
 
 

@@ -52,3 +52,8 @@ export const Seacrh = Loadable({
     loader:_=> import("./search"),
     loading:Loading
 })
+
+export const ticketList = Loadable({
+    loader:_=> import("./ticketlist"),
+    loading:Loading
+})

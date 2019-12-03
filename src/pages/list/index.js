@@ -4,17 +4,19 @@ import { Icon } from 'antd';
 import {withRouter} from "react-router-dom";
 import {mapStateToProps,mapDispatchToProps} from "./mapStore";
 import {connect} from "react-redux";
+import  BscrollY from "common/ScrollY";
 @connect(mapStateToProps,mapDispatchToProps)
 @withRouter
 class List extends React.Component {
     constructor(){
         super()
-     
+        this.page=1;
 
     }
     render() {
-        console.log(this.props.data)
+       
         let {goods} = this.props;
+     
         return (
             <Fragment>
                 <Header>
@@ -40,6 +42,7 @@ class List extends React.Component {
                             <li>自营</li>
                         </ul>
                     </div>
+                    <BscrollY ref="scroll">
                     <div className="product">
                         <ul>
                            {    
@@ -74,12 +77,15 @@ class List extends React.Component {
                         </ul>
 
                     </div>
-
+                    </BscrollY>     
                 </Container>
 
             </Fragment>
 
         )
+    }
+    componentWillUpdate(){
+       this.refs.scroll.handlefinishPullUp();
     }
     handleToDetail(groudId){
 
@@ -93,8 +99,18 @@ class List extends React.Component {
     }
     componentDidMount(){
         let {link} = this.props.match.params;
+        let page = this.page;
+        this.props.handleGetLink(link,page)
         
-        this.props.handleGetLink(link);
+       
+
+        this.refs.scroll.handlepullingUp(()=>{
+            
+            page++;
+        
+            this.props.handleGetLink(link,page)
+        });
+      
         
     }
   
