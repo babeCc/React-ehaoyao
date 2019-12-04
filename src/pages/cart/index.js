@@ -25,7 +25,7 @@ class Cart extends React.Component {
             <Fragment>
 
                 <Header>
-                    <Icon type="left" />
+                    <Icon type="left" onClick={this.handleBack.bind(this)} />
                     <div>
                         <span>购物车
                                 <i>{num}</i>
@@ -53,15 +53,15 @@ class Cart extends React.Component {
                         <div className="mainCart bg">
                             <ul>
                                 {
-                                    (list ? list : []).map((item) => (
-                                        <li key={item.id}>
+                                    (list ? list : []).map((item, index) => (
+                                        <li key={item.groupId} onClick={this.handleToDetail.bind(this, item.groupId)}>
                                             <span className="selectEach">
-                                                <CheckboxItem checked={item.flag} onChange={() => this.eachChange(item.flag, item.id)} style={{ fontSize: '10px', }}>
+                                                <CheckboxItem checked={item.flag} onChange={this.eachChange.bind(this, item.flag, item.groupId)} style={{ fontSize: '10px', }}>
 
                                                 </CheckboxItem>
                                             </span>
 
-                                            <img src="http://image.qumaiyao.com/data/goodscenter/imges/set_meal_copy_64690/000000006368978e01636cd08a390384_zfx_small0.jpg" alt="" />
+                                            <img src={item.img} alt="" />
                                             <div className="right">
                                                 <h2 className="to">{item.name}</h2>
                                                 <h3>{item.type}</h3>
@@ -70,13 +70,13 @@ class Cart extends React.Component {
                                                     <p>¥<span>{item.price}</span></p>
                                                     <div>
                                                         <div className="pri">
-                                                            <Icon type="minus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.reduceHandle.bind(this, item.id)} />
+                                                            <Icon type="minus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.reduceHandle.bind(this, item.groupId)} />
 
-                                                            <input type="text" value={item.num} onChange={this.handleChangeNum.bind(this, item.id)} />
-                                                            <Icon type="plus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.addHandle.bind(this, item.id)} />
+                                                            <input type="text" value={item.num} onChange={this.handleChangeNum.bind(this, item.groupId)} />
+                                                            <Icon type="plus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.addHandle.bind(this, item.groupId)} />
 
                                                         </div>
-                                                        <Icon type="rest" style={{ fontSize: '18px', color: 'rgb(154, 154, 154)' }}  />
+                                                        <Icon type="rest" style={{ fontSize: '18px', color: 'rgb(154, 154, 154)' }} />
                                                     </div>
                                                 </div>
 
@@ -185,21 +185,30 @@ class Cart extends React.Component {
             </Fragment>
         )
     }
+    handleToDetail(groupId, e) {
+        if (e.target.nodeName !== 'INPUT' && e.target.nodeName !== 'svg') {
+            this.props.history.push("/detail/" + groupId);
+        }
+
+    }
+    handleBack() {
+        this.props.history.goBack()
+    }
     componentDidMount() {
         this.props.handleSetFlag()
         // console.log(this.props.list)
     }
 
-    addHandle(id) {
-        this.props.handleAddPro(id)
+    addHandle(groupId) {
+        this.props.handleAddPro(groupId)
 
     }
-    reduceHandle(id) {
-        this.props.handleReducePro(id)
+    reduceHandle(groupId) {
+        this.props.handleReducePro(groupId)
     }
-    handleChangeNum(id, e) {
+    handleChangeNum(groupId, e) {
         let val = e.target.value;
-        this.props.handleNumChangePro(val, id)
+        this.props.handleNumChangePro(val, groupId)
         // console.log(e.target)
 
     }
@@ -207,9 +216,10 @@ class Cart extends React.Component {
 
         this.props.handleAllselect()
     }
-    eachChange(flag, id) {
-        console.log(flag, id);
-        this.props.handleEachSelect(id)
+    eachChange(flag, groupId, e) {
+        e.preventDefault()
+        e.stopPropagation()
+        this.props.handleEachSelect(groupId)
 
 
     }

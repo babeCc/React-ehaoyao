@@ -16,3 +16,10 @@ export const ticketAsync = "TICKET_ASYNC_TYPE";
 export const getAsync = "TICKET_GET_TYPE"
 
 export const getTicketListAsync ="TICKET_LIST_ASYNC_TYPE"
+
+export const getSerchProAsync="GET_SERCH_PRO"
+
+export const changeKeyWord="CHANGE_KEYWORD"
+
+
+export const pushChooseKeyWord="PUSH_KEYWORD"

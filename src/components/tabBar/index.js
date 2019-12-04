@@ -20,7 +20,7 @@ class TabBar extends Component {
             <TabBarContainer>
                 <div className="home_footer">
                     <ul>
-        <i>{JSON.parse(localStorage.getItem("num"))}</i>
+        <i style={{display:localStorage.getItem("num")?'block':'none'}}>{JSON.parse(localStorage.getItem("num"))}</i>
                         {
                             TabBarRoute.map((item)=>(
                             <li key={item.title} onClick={this.handleTo.bind(this,item.path)}

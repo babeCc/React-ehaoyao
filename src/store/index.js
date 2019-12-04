@@ -8,13 +8,13 @@ import search from "./reducers/search";
 import list from "./reducers/list";
 import sort from "./reducers/sort";
 import detail from "./reducers/detail";
-<<<<<<< HEAD
+
 import cart from "./reducers/cart"
 import cartCommand from "./reducers/cartCommand"
-=======
+
 import ticket from "./reducers/ticket";
 import ticketlist from "./reducers/ticketlist"
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
+
 const reducers = combineReducers({
     home,
     activity,
@@ -23,13 +23,11 @@ const reducers = combineReducers({
     list,
     sort,
     detail,
-<<<<<<< HEAD
     cart,
-    cartCommand
-=======
+    cartCommand,
     ticket,
     ticketlist
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
+
 })
 
 const store = createStore(reducers,composeWithDevTools(applyMiddleware(reduxThunk)))

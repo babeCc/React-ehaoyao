@@ -1,25 +1,19 @@
 import React, { Fragment } from "react"
 import { Header, Container } from "./styled"
 import { Icon } from 'antd';
-<<<<<<< HEAD
+
 import { withRouter } from "react-router-dom";
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 import { connect } from "react-redux";
+import BscrollY from "common/ScrollY";
 @connect(mapStateToProps, mapDispatchToProps)
-=======
-import {withRouter} from "react-router-dom";
-import {mapStateToProps,mapDispatchToProps} from "./mapStore";
-import {connect} from "react-redux";
-import  BscrollY from "common/ScrollY";
-@connect(mapStateToProps,mapDispatchToProps)
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
+
 @withRouter
 class List extends React.Component {
     constructor() {
         super()
-<<<<<<< HEAD
+        this.page = 1;
         this.state = {
-            activeClass: -1,
             nav: [
                 "综合排序",
                 "价格",
@@ -30,20 +24,10 @@ class List extends React.Component {
 
 
     }
-    render() {
-        // console.log(this.props.data)
-        let { goods } = this.props;
-        let { activeClass, nav } = this.state;
-        console.log(nav)
-=======
-        this.page=1;
 
-    }
     render() {
-       
-        let {goods} = this.props;
-     
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
+        let { nav } = this.state;
+        let { goods, activeClass } = this.props;
         return (
             <Fragment>
                 <Header>
@@ -59,64 +43,99 @@ class List extends React.Component {
                     <div className="navTop">
                         <ul>
                             {
-                               this.state.nav.map((item, index) => (
-                                    < li key={index} >{item}</li>
-                                    
-                               ))
+                                nav.map((item, index) => (
+                                    < li className={activeClass == index ? 'active' : '11'} key={index} onClick={this.handleClick.bind(this, index)}>{item}</li>
+
+                                ))
 
                             }
                         </ul>
                     </div>
                     <BscrollY ref="scroll">
-                    <div className="product">
-                        <ul>
-                            {
-                                goods.map((item, index) => (
-                                    <li key={index} onClick={this.handleToDetail.bind(this, item.groupId)}>
-                                        <div className="borderimg">
-                                            <div className="image">
+                        <div className="product">
+                            <ul>
+                                {
+                                    (goods?goods:[]).map((item, index) => (
+                                        <li key={index} onClick={this.handleToDetail.bind(this, item.groupId)}>
+                                            <div className="borderimg">
+                                                <div className="image">
 
-                                                <img src={"http://image.qumaiyao.com/" + item.smallPic} alt="" />
-                                            </div>
-                                        </div>
-                                        <div className="content">
-                                            <p className="title to">
-                                                <span>{item.pharmName == "好药师商城" ? "自营" : "商家"}</span>{item.goodsName}
-
-                                            </p>
-                                            <p className="to">{item.brief}</p>
-                                            <p className="to">规格: {item.spec}</p>
-                                            <div className="proPrice">
-                                                <div>
-                                                    <p className="p1">¥<span>{item.price}</span> </p>
-                                                    <p className="p2">¥<span>{item.oldPrice}</span> </p>
+                                                    <img src={"http://image.qumaiyao.com/" + item.smallPic} alt="" />
                                                 </div>
-                                                <h2 onClick={this.handleAddCart.bind(this, goods, index)}>+</h2>
                                             </div>
-                                        </div>
-                                    </li>
-                                ))
-                            }
+                                            <div className="content">
+                                                <p className="title to">
+                                                    <span>{item.pharmName == "好药师商城" ? "自营" : "商家"}</span>{item.goodsName}
+
+                                                </p>
+                                                <p className="to">{item.brief}</p>
+                                                <p className="to">规格: {item.spec}</p>
+                                                <div className="proPrice">
+                                                    <div>
+                                                        <p className="p1">¥<span>{item.price}</span> </p>
+                                                        <p className="p2">¥<span>{item.oldPrice}</span> </p>
+                                                    </div>
+                                                    <h2 onClick={this.handleAddCart.bind(this, goods, index)}>+</h2>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    ))
+                                }
 
 
-                        </ul>
+                            </ul>
 
-                    </div>
-                    </BscrollY>     
+                        </div>
+                    </BscrollY>
                 </Container>
 
             </Fragment >
 
         )
     }
-<<<<<<< HEAD
-    handleToDetail(groudId) {
-=======
-    componentWillUpdate(){
-       this.refs.scroll.handlefinishPullUp();
+
+    handleClick(index) {
+        // this.props.activeClass=index;
+        // console.log(this.props)
+        let ff="", tt="", dd="",key='';
+        let {isSelf,type,descs } = this.props;
+        // console.log(descs)
+        if (index == 0) {
+                ff = "";
+                tt = type;
+                dd = descs
+        } else if (index == 1) {
+            if (descs == 'asc') {
+                    ff = "";
+                    tt = 2;
+                    dd = 'desc'
+            } else {
+                    ff = "";
+                    tt = 2;
+                    dd = 'asc'
+            }
+        } else if (index == 3) {
+                ff = 1;
+                tt = type;
+                dd = descs
+        }
+        console.log(222,index)
+        if(!this.props.match.params.link){
+            key=this.props.match.params.keyWord
+            this.props.handleSerchXuan(ff, tt, dd,key,index)
+        }else{
+            this.props.handleXuan(ff, tt, dd,key,index)
+        }
+
+        // this.props.handleGetData(index)
+        
+
     }
-    handleToDetail(groudId){
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
+    componentWillUpdate() {
+        this.refs.scroll.handlefinishPullUp();
+    }
+    handleToDetail(groudId) {
+
 
         this.props.history.push("/detail/" + groudId);
     }
@@ -126,32 +145,40 @@ class List extends React.Component {
     handleToSearch() {
         this.props.history.push("/search")
     }
-<<<<<<< HEAD
     componentDidMount() {
-        let { link } = this.props.match.params;
-
-        this.props.handleGetLink(link);
-
-=======
-    componentDidMount(){
-        let {link} = this.props.match.params;
+        console.log(this.props.match.params)
         let page = this.page;
-        this.props.handleGetLink(link,page)
         
-       
+        if(this.props.match.params.link){
+  
+              let { link } = this.props.match.params;
+              this.props.handleGetLink(link, page)
+              this.refs.scroll.handlepullingUp(() => {
 
-        this.refs.scroll.handlepullingUp(()=>{
+                page++;
+    
+                this.props.handleGetLink(link, page)
+            });
+        }else{
+            let { keyWord } = this.props.match.params;
+            // console.log(keyWord)
             
-            page++;
-        
-            this.props.handleGetLink(link,page)
-        });
+            this.props.handleChangeKey(keyWord, page);
+              this.refs.scroll.handlepullingUp(() => {
+
+                page++;
+    
+                this.props.handleChangeKey(keyWord, page)
+            });
+        }
       
+       
+  
         
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
+
     }
     handleAddCart(goods, index, e) {
-        var obj = { id: goods[index].groupId, name: goods[index].goodsName, type: goods[index].spec, price: goods[index].price, num: 1 }
+        var obj = { img: "http://image.qumaiyao.com/" + goods[index].smallPic, groupId: goods[index].groupId, name: goods[index].goodsName, type: goods[index].spec, price: goods[index].price, num: 1 }
         e.stopPropagation()
         this.props.handleListAdd(obj)
         // console.log(goods[index].goodsName, goods[index].spec, goods[index].price)

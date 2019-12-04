@@ -14,7 +14,7 @@ export default handleActions({
         let addCartState = JSON.parse(JSON.stringify(state));
         let has=0,num=0;
         addCartState.prolist.forEach(item => {
-            if(item.id==action.obj.id){
+            if(item.groupId==action.obj.groupId){
                 item.num++
                 has=1;
             }  
@@ -32,7 +32,7 @@ export default handleActions({
         let addCartProState = JSON.parse(JSON.stringify(state));
         let countNum = 0,countPrice=0,num=0
         addCartProState.prolist.forEach(item => {
-            if(item.id==action.id){
+            if(item.groupId==action.id){
                 item.num++
             }
             if(item.flag){
@@ -53,7 +53,7 @@ export default handleActions({
         let reduceCartProState = JSON.parse(JSON.stringify(state));
         let countNum = 0,countPrice=0,num=0
         reduceCartProState.prolist.forEach(item => {
-            if(item.id==action.id){
+            if(item.groupId==action.id){
                 if(item.num==1){
                     item.num=1
                 }else{
@@ -79,7 +79,7 @@ export default handleActions({
         let numChangeProState = JSON.parse(JSON.stringify(state));
         let countNum = 0,countPrice=0,num=0
         numChangeProState.prolist.forEach(item => {
-            if(item.id==action.id){
+            if(item.groupId==action.id){
                 item.num=action.val
             } 
             if(item.flag){
@@ -135,7 +135,7 @@ export default handleActions({
         let a=1,countNum = 0,countPrice=0
         
         eachSelectState.prolist.forEach(item => {
-            if(item.id==action.id){
+            if(item.groupId==action.id){
                 item.flag=!item.flag;
             }
             if(!item.flag){

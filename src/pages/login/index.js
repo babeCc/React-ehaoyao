@@ -3,12 +3,20 @@ import {Icon} from "antd"
 import {Header,Container} from "./styled"
 import {connect} from "react-redux";
 
+
 import {withRouter} from "react-router-dom";
 
 
 @withRouter
 class Login extends React.Component{
+    constructor(){
+        super()
+        this.state={
+            status:"注册"
+        }
+    }
     render(){
+        let {status}=this.state;
         return(
             <Fragment>
                 <Header>
@@ -16,7 +24,7 @@ class Login extends React.Component{
                     <div>
                         会员登录
                     </div>
-                    <a>注册</a>
+                    <a onClick={this.handleTurn.bind(this)}>{status}</a>
                 </Header>
                 <Container>
                     <div className="mes">
@@ -40,6 +48,9 @@ class Login extends React.Component{
     }
     handleBack(){
         this.props.history.goBack();
+    }
+    handleTurn(){
+        
     }
 }
 export default Login;

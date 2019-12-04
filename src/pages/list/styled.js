@@ -66,7 +66,9 @@ export const Container = styled.div`
         background-color: #fff;
         margin-bottom:0;
         li{
+            height:100%;
             padding:0 0.085rem;
+            line-height:29.7px;
         }
         span{
             position:relative
@@ -81,6 +83,9 @@ export const Container = styled.div`
             position:absolute;
             top:0.06rem;
             left:0.02rem;
+        }
+        .active{
+            border-bottom:.02rem solid #ff344d;
         }
 
     }

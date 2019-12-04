@@ -36,7 +36,7 @@ export const TabBarContainer = styled.div`
             font-size: .1rem;
             font-style: normal;
             border-radius:50%;
-            right:30%;
+            right:23%;
        }
 
     }

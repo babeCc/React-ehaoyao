@@ -63,7 +63,13 @@ export const TabBarRoute = [
         title:"我的",
         icon:"\ue659"
     },
-<<<<<<< HEAD
+
+    
+    
+];
+
+
+export const NoTabBarRoute = [
     {
         path:"/list/:link",
         component:List,
@@ -73,14 +79,15 @@ export const TabBarRoute = [
         title:"",
         icon:""
     },
-    
-=======
-
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
-];
-
-
-export const NoTabBarRoute = [
+    {
+        path:"/search/:keyWord",
+        component:List,
+        meta:{
+            flag:true
+        },
+        title:"",
+        icon:""
+    },
     
     {
         path:"/ticketlist/:id/:name",

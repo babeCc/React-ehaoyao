@@ -35,7 +35,7 @@ class Activity extends React.Component {
                 </div>
                 <ul className="seckill-list">
                     {
-                       goods.map((item)=>(
+                       goods.map((item,index)=>(
                         <li key={item.goodsId} onClick={this.handleToDetail.bind(this,item.groupId)}>
                         <div className="img">
                             <img src={"http://image.qumaiyao.com/"+item.smallPic} alt="" />
@@ -54,7 +54,7 @@ class Activity extends React.Component {
                                 <div className="opt">
                                     <span className="price"><i>￥</i>{item.buyingPrice}<span className="old-price">￥{item.price}</span></span>
 
-                                    <span className="btn_base">立即抢购</span>
+                                    <span className="btn_base" onClick={this.handleAddCart.bind(this, goods, index)}>立即抢购</span>
                                 </div>
                             </div>
                         </div>
@@ -74,6 +74,13 @@ class Activity extends React.Component {
     componentDidMount() {
         this.props.handleActivityAsyncData()
         TimeDown("time_wrapper", '2019-12-07 12:00:00')
+    }
+    handleAddCart(goods, index, e) {
+        var obj = {img:"http://image.qumaiyao.com/"+goods[index].smallPic,groupId: goods[index].goodsId, name: goods[index].goodsName, type: goods[index].spec, price: goods[index].buyingPrice, num: 1 }
+        e.stopPropagation()
+        this.props.handleListAdd(obj)
+        // console.log(goods[index].goodsName, goods[index].spec, goods[index].price)
+        // console.log(obj)
     }
 }
 

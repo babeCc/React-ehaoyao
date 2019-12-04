@@ -1,4 +1,4 @@
-import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync} from "./homeActionType";
+import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync,changeKeyWord,pushChooseKeyWord} from "./homeActionType";
 
 import {activityApi,activityListApi,searchApi,goodsKeysApi,ticketApi,getApi,ticketListApi} from "api/activityA";
 
@@ -8,15 +8,26 @@ export const homeAsyncAction  = (connType,cityId)=>{
             return async (dispatch)=>{
            if(!localStorage.getItem("activity")){
             let data = await activityApi();
-           
+
             dispatch(homeAction(data));
            }
-         
         }
-       
-     
-    
 }
+
+// //传递关键字
+
+// export const changeKeyWordActions = (val) =>({
+//     type:changeKeyWord,
+//     val:val
+    
+// })
+
+//使用关键字
+
+export const pushChooseActions=(val)=>({
+    type:pushChooseKeyWord,
+    val:val
+})
 
 export const activityAsyncAction = (goodsId) =>{
     let activityAction = createAction(activityAsync,(data)=>data)
@@ -88,3 +99,8 @@ export const ticketListAsyncAction = (id) =>{
         dispatch(ticketListAction(data))
     }
 }
+
+
+
+
+

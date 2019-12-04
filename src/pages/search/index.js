@@ -57,7 +57,7 @@ class Search extends React.Component{
                 <ul className="search-result" style={{display:searchResult?"block":"none"}}>
                    {          
                               (searchResult?searchResult:searchResult).map((item)=>(
-                              <li key={item}>{item}</li>
+                              <li key={item} onClick={this.chooseHandle.bind(this,item)}>{item}</li>
                               )
                                     
                                 )
@@ -74,6 +74,16 @@ class Search extends React.Component{
     componentDidMount(){
         this.props.handleGetGoodsKey();
         
+    }
+    chooseHandle(item){
+        // console.log(item)
+        this.props.handlepushChoose(item);
+        setTimeout(()=>{
+            this.props.history.push("/search/"+item)
+        },1000)
+        
+
+
     }
 }
 
