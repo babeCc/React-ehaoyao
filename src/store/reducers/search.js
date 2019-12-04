@@ -1,12 +1,13 @@
 
 import {handleActions} from "redux-actions";
 
-import {goodsKeysAsync,seacrhAsync,inputValueAction} from "actions/home/homeActionType";
+import {goodsKeysAsync,seacrhAsync,inputValueAction,changeKeyWord,pushChooseKeyWord} from "actions/home/homeActionType";
 
  let defaultState =  {
     goodsKey:[],
     searchResult:[],
-    inputValue:""
+    inputValue:"",
+    
  }
 
  export default handleActions({
@@ -28,4 +29,19 @@ import {goodsKeysAsync,seacrhAsync,inputValueAction} from "actions/home/homeActi
             searchState.inputValue = action.payload;
         return searchState;
     },
+    // [changeKeyWord]:(state,action)=>{
+    //     var searchGetState = JSON.parse(JSON.stringify(state));
+    //     searchGetState.inputValue = action.payload.val;
+    //     searchGetState.searchResult=[]
+    //     // console.log(searchGetState.goodsList)
+    //     return searchGetState;
+    // },
+    [pushChooseKeyWord]:(state,action)=>{
+        var searchGetState = JSON.parse(JSON.stringify(state));
+        searchGetState.inputValue = action.val;
+        searchGetState.searchResult=[]
+        // console.log(searchGetState.goodsList)
+        return searchGetState;
+    },
+    
  },defaultState)

@@ -1,4 +1,4 @@
-import {listAsync} from "actions/list/listActionType";
+import {listAsync,} from "actions/list/listActionType";
 import {handleActions} from "redux-actions";
 
 let defaultState =  {
@@ -13,6 +13,8 @@ export default handleActions({
         
         localStorage.setItem("list",JSON.stringify(action.payload.data));
         return listState
-    }
+    },
+    
+    
 
 },defaultState)

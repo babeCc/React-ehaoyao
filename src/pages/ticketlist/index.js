@@ -38,7 +38,7 @@ class TicketList extends React.Component {
                 </div>
                 <div className="content">
                     <ul>
-                      {(data.goodsList?data.goodsList:[]).map((item)=>(
+                      {(data.goodsList?data.goodsList:[]).map((item,index)=>(
                           <li key={item.goodsId} onClick={this.handleToDetail.bind(this,item.groupId)}>
                           <div className="img"><img src={"http://image.qumaiyao.com/"+item.bigPic} alt=""/></div>
                           <div className="right">
@@ -54,7 +54,7 @@ class TicketList extends React.Component {
                                       <span className="sell-price">￥{item.price}</span>
                                       <span className="old-price">￥{item.oldPrice}</span>
                                   </div>
-                                  <span className="btn-cart">+</span>
+                                  <span className="btn-cart" onClick={this.handleAddCart.bind(this, data.goodsList, index)}>+</span>
                               </div>
                           </div>
                       </li>
@@ -84,6 +84,13 @@ class TicketList extends React.Component {
         let {id} = this.props.match.params;
         this.props.handleGetData(id)
     
+    }
+    handleAddCart(goods, index, e) {
+        var obj = {img:"http://image.qumaiyao.com/"+goods[index].item.bigPic,id: goods[index].goodsId, name: goods[index].goodsName, type: goods[index].spec, price: goods[index].price, num: 1 }
+        e.stopPropagation()
+        this.props.handleListAdd(obj)
+        // console.log(goods[index].goodsName, goods[index].spec, goods[index].price)
+        // console.log(obj)
     }
 }
 

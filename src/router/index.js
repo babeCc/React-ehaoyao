@@ -63,10 +63,37 @@ export const TabBarRoute = [
         title:"我的",
         icon:"\ue659"
     },
+<<<<<<< HEAD
+=======
+
+    
+    
+>>>>>>> tutu
 ];
 
 
 export const NoTabBarRoute = [
+<<<<<<< HEAD
+=======
+    {
+        path:"/list/:link",
+        component:List,
+        meta:{
+            flag:true
+        },
+        title:"",
+        icon:""
+    },
+    {
+        path:"/search/:keyWord",
+        component:List,
+        meta:{
+            flag:true
+        },
+        title:"",
+        icon:""
+    },
+>>>>>>> tutu
     
     {
         path:"/ticketlist/:id/:name",

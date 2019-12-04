@@ -16,6 +16,7 @@ export const ticketAsync = "TICKET_ASYNC_TYPE";
 export const getAsync = "TICKET_GET_TYPE"
 
 export const getTicketListAsync ="TICKET_LIST_ASYNC_TYPE"
+<<<<<<< HEAD
 export const modifyFlag = "MODIFY_FLAG_TYPE"
 
 export const changRegister = "CHANGE_REGISTER"
@@ -25,3 +26,12 @@ export const changePasswordAction = "CHANGE_PASSWORD";
 export const changeUsernameAction = "CHANGE_USERNAME";
 export const regiserAsyncAction = "REGISER_ASYNC";
 export const loginAsyncAction = "LOGIN_ASYNC";
+=======
+
+export const getSerchProAsync="GET_SERCH_PRO"
+
+export const changeKeyWord="CHANGE_KEYWORD"
+
+
+export const pushChooseKeyWord="PUSH_KEYWORD"
+>>>>>>> tutu

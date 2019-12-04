@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync,modifyFlag} from "./homeActionType";
+=======
+import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync,changeKeyWord,pushChooseKeyWord} from "./homeActionType";
+>>>>>>> tutu
 
 import {activityApi,activityListApi,searchApi,goodsKeysApi,ticketApi,getApi,ticketListApi,registerApi,loginApi} from "api/activityA";
 import {changRegister,changeUsernameAction,changePasswordAction,regiserAsyncAction,loginAsyncAction} from "./homeActionType";
@@ -57,15 +61,31 @@ export const homeAsyncAction  = (connType,cityId)=>{
             return async (dispatch)=>{
           
             let data = await activityApi();
-           
+
             dispatch(homeAction(data));
+<<<<<<< HEAD
            
          
+=======
+           }
+>>>>>>> tutu
         }
-       
-     
-    
 }
+
+// //传递关键字
+
+// export const changeKeyWordActions = (val) =>({
+//     type:changeKeyWord,
+//     val:val
+    
+// })
+
+//使用关键字
+
+export const pushChooseActions=(val)=>({
+    type:pushChooseKeyWord,
+    val:val
+})
 
 export const activityAsyncAction = (goodsId) =>{
     let activityAction = createAction(activityAsync,(data)=>data)
@@ -138,7 +158,14 @@ export const ticketListAsyncAction = (id) =>{
     }
 }
 
+<<<<<<< HEAD
 // activity flag
 export const flagAction=()=>({
     type:modifyFlag,
 })
+=======
+
+
+
+
+>>>>>>> tutu
