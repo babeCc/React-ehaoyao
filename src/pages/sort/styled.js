@@ -66,13 +66,21 @@ export const Container = styled.div`
         display:flex;
     }
     .category-wrapper .navleft{
-        height:100%;
+        height:3.5rem;
+        overflow:auto;
         border-left: 1px solid #f0f2f5;
         width: 0.7rem;
         background-color: #f0f2f5;
+        ::-webkit-scrollbar {
+                display: none;
+            }
     }
-    .navleft ul{
-        font-size:0.1rem;
+    .navleft {
+       
+        ul{
+            font-size:0.1rem;
+            
+        }
     }
     .navleft li{
         text-align:center;

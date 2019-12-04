@@ -33,6 +33,14 @@ export const Container=styled.div`
         overflow:auto;
         background-color: #f5f5f5;
         .title-box{
+            .picBox{
+                display:block;
+                overflow:hidden;
+                border-radius:50%;
+                height:.54rem;
+                width:.54rem;
+            }
+          
             position: relative;
             height: 1.335rem;
             padding: .22rem .14rem 0;

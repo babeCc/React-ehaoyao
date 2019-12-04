@@ -13,7 +13,7 @@ class TicketList extends React.Component {
 
     }
     render() {
-        let {data} = this.props;
+        let {data,flag} = this.props;
        
         
         let {name} = this.props.match.params;
@@ -62,7 +62,7 @@ class TicketList extends React.Component {
                         
                        
                     </ul>
-                   <div style={{display:(data.goodList?data.goodList:[]).length?"block":"none"}}>
+                   <div style={{display:flag?"none":"block"}}>
                       <div className="noresult" >抱歉没找到{name}相关的商品</div>
                     <a href="">咨询药师</a>
                     </div>

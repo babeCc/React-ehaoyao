@@ -63,20 +63,6 @@ export const TabBarRoute = [
         title:"我的",
         icon:"\ue659"
     },
-<<<<<<< HEAD
-    {
-        path:"/list/:link",
-        component:List,
-        meta:{
-            flag:true
-        },
-        title:"",
-        icon:""
-    },
-    
-=======
-
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
 ];
 
 

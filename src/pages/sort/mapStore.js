@@ -1,6 +1,7 @@
 import {listAsyncAction} from "actions/list/listActionCreator";
 export const mapStateToProps = (state)=>({
-    list:JSON.parse(localStorage.getItem("list")) || state.list.list || []
+    list:JSON.parse(localStorage.getItem("list")) || state.list.list || [],
+    
 })
 
 

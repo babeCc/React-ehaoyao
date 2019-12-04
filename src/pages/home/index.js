@@ -16,6 +16,7 @@ import BscrollCom from "../.././common/btrScroll";
                
                 super()
                 this.state = {
+                    userInfo:JSON.parse(sessionStorage.getItem("userInfo")),
                     list: [
                         {
                             title: "咨询问诊",
@@ -123,7 +124,7 @@ import BscrollCom from "../.././common/btrScroll";
             render() {
             
               let {home_goods} = this.props;
-             
+            let {userInfo} = this.state;
                 return (
                     <HomeContainer>
                         <div id="home">
@@ -134,7 +135,7 @@ import BscrollCom from "../.././common/btrScroll";
                                         <input type="text" placeholder="泰尔丝 补肺丸 鸿茅药酒" />
                                         <div className="search_logo"></div>
                                     </div>
-                                    <div className="header_login" onClick={this.handleLogin.bind(this)}>登录</div>
+                <div className="header_login"  onClick={this.handleLogin.bind(this)}>{userInfo?userInfo.name:"登录"}</div>
                                 </div>
                             </HomeHeaderContainer>
                             <HomeContentContainer>
@@ -266,16 +267,24 @@ import BscrollCom from "../.././common/btrScroll";
             handleToActivity(){
                 this.props.history.push("./activity");
             }
-            handleLogin(){
-                console.log(this.props)
+            handleLogin(e){
+                e.stopPropagation()
+              if(this.state.userInfo.name){
+                  this.props.history.push('/mine')
+              }else{
                 this.props.history.push("./login")
+              }
+               
             }
             componentDidMount() {
                
                 this.props.handleHomeAsyncData()
-                TimeDown("time_wrapper", '2019-12-07 12:00:00')
+                
                
                 
+            }
+            componentDidUpdate(){
+                TimeDown("time_wrapper", this.props.date)
             }
        
     }

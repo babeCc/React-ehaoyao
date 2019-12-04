@@ -17,19 +17,19 @@ class Detail extends React.Component {
        
       
         return (
-            <Fragment>
+            <Fragment >
                 <Header>
                     <Icon type="left" onClick={this.handleBack.bind(this)}/>
                     <div>
-                        <span>商品</span>
-                        <span>详情</span>
+                        <span onClick={this.handleToTop.bind(this)}>商品</span>
+                        <span onClick={this.handleTo.bind(this)}>详情</span>
 
                     </div>
                     <Icon type="search" style={{ fontSize: '16px', }} onClick={this.handleToSearch.bind(this)} />
                     <Icon type="dash" style={{ fontSize: '20px', }} onClick={this.handleClick.bind(this)} />
                     
                 </Header>
-                <Container>
+                <Container ref="scroll">
                 <div className="header_box" style={{display:this.flag?"block":"none"}}>
                         <div className="mask" onClick={this.handleClick.bind(this)}></div>
                         <div className="menu_list">
@@ -134,7 +134,7 @@ class Detail extends React.Component {
                         <div className="details ">
                           
                            
-                            <ul className="HTML" dangerouslySetInnerHTML={{__html:info.imageTexts}}>
+                            <ul className="HTML" ref="HTML" dangerouslySetInnerHTML={{__html:info.imageTexts}}>
                              
                             </ul>
 
@@ -171,11 +171,20 @@ class Detail extends React.Component {
             </Fragment>
         )
     }
-    handleClick(){
+    handleToTop(){
+        this.refs.scroll.scrollTop=0;
+    }
+    handleTo(){
+       let t = this.refs.HTML.offsetTop;
+       this.refs.scroll.scrollTop=t;
+    }
+    handleClick(e){
+        e.stopPropagation();
         this.flag=!this.flag;
         this.forceUpdate();
     }
-    handleToSearch(){
+    handleToSearch(e){
+        e.stopPropagation();
         this.props.history.push("/search");
     }
     handleBack(){

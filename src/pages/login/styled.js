@@ -11,6 +11,7 @@ export const Header = styled.div`
     line-height:0.38rem;
     color:white;
     font-size:.13.6rem;
+    
     a{  
         color:white;
         font-size:0.119rem;
@@ -31,7 +32,24 @@ export const Container=styled.div`
         height:100%;
         overflow:auto;
         background-color: #f5f5f5;
-        
+        .box{
+        position:fixed;
+        top:2rem;
+        left:0;
+        right:0;
+        height:.4rem;
+        width:1.2rem;
+        text-align:center;
+        font-size:12px;
+        flex-direction:column;
+        background:rgba(0,0,0,.5);
+        z-index:100;
+        margin:0 auto;
+        border-radius:0.05rem;
+        line-height:.4rem;
+        color:#fff;
+
+    }
         .mes{
             margin-top:14.5px;
             padding: 0 10px;

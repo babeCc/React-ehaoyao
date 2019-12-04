@@ -44,6 +44,7 @@ export default handleActions({
         addCartProState.num=num;
         addCartProState.countNum = countNum;
         addCartProState.countPrice = countPrice;
+       
         localStorage.setItem("cartList",JSON.stringify(addCartProState.prolist))
         localStorage.setItem("num",JSON.stringify(addCartProState.num))       
         // var arr=localStorage.getItem("cartList")

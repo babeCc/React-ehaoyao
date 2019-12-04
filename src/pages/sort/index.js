@@ -15,7 +15,7 @@ class Sort extends React.Component {
     }
     render() {
         let { list } = this.props;
-      
+     
         return (
             <div>
                 
@@ -31,7 +31,7 @@ class Sort extends React.Component {
                         <div className="navleft">
                             <ul>
                                 {
-                                    (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item, index) => (
+                                    (list?list:[]).map((item, index) => (
                                         <li key={index} id={item.cid} onClick={this.handleActive.bind(this, index)}
                                             className={index == this.activeIndex ? "active" : "" }
                                            
@@ -44,11 +44,7 @@ class Sort extends React.Component {
                             <div>
                                 <div className="label-list">
                                     {
-<<<<<<< HEAD
-                                        (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item) => (
-=======
                                       (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item) => (
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
                                             <a href={"#sort#"+item.cid} key={item.cid} >{item.name}</a>
                                         ))
                                     }
@@ -56,11 +52,7 @@ class Sort extends React.Component {
                             </div>
 
                             {
-<<<<<<< HEAD
-                                (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item, index) => (
-=======
                                 (list[this.activeIndex]?list[this.activeIndex].list:[]).map((item) => (
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
                                     <dl id={"sort#"+item.cid} key={item.cid} >
                                         <dt>{item.name}</dt>
                                         {
@@ -107,10 +99,7 @@ class Sort extends React.Component {
     }
     componentDidMount() {
        this.props.handleGetList()
-<<<<<<< HEAD
-=======
-      
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
+    
     }
 }
 

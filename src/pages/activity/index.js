@@ -4,24 +4,23 @@ import Header from "components/header";
 import { TimeDown } from "utils/timer";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
-
+import CartCom from "components/cart";
 import{mapStateToProps,mapDispatchToProps} from "./mapStore";
 @connect(mapStateToProps,mapDispatchToProps)
 @withRouter
 class Activity extends React.Component {
     constructor() {
         super()
-        this.state = {
-            title: "限时抢购"
-        }
+       
     }
 
     render() {
-       let {goods} = this.props;
-       console.log(this.props.goods)
-        let { title } = this.state;
+       let {goods,title,flag} = this.props;
+       
+      
         return (
             <ActivityContainer>
+                <CartCom flag={flag}></CartCom>
                 <Header title={title} />
                 <div className="activity_content">
                     <div className="content_banner">
@@ -54,7 +53,7 @@ class Activity extends React.Component {
                                 <div className="opt">
                                     <span className="price"><i>￥</i>{item.buyingPrice}<span className="old-price">￥{item.price}</span></span>
 
-                                    <span className="btn_base">立即抢购</span>
+                                    <span className="btn_base" onClick={this.handleBox.bind(this)}>立即抢购</span>
                                 </div>
                             </div>
                         </div>
@@ -67,11 +66,21 @@ class Activity extends React.Component {
 
         )
     }
+    handleBox(e){
+        
+        e.stopPropagation();
+       
+           this.props.handleFlag()
+          
+        
+          
+    }
     handleToDetail(groupId){
        
         this.props.history.push("/detail/"+groupId)
     }
     componentDidMount() {
+       
         this.props.handleActivityAsyncData()
         TimeDown("time_wrapper", '2019-12-07 12:00:00')
     }

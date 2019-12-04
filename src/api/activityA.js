@@ -1,5 +1,26 @@
 import Http from "utils/request";
 
+//登录注册
+
+export const registerApi = (username,password)=>Http.post({
+    url:"/users/register",
+    method:"post",
+    data:{
+        username,
+        password
+    }
+
+})
+
+export const loginApi = (username,password)=>Http.post({
+    url:"/users/login",
+    method:"post",
+    data:{
+        username,
+        password  
+    }
+})
+//限时抢购
 export const activityApi = (coonType = "5", cityId = "027") => Http.get({
     url: "/api/mds/api/app/apiv3_0/getBuyingGoodsMSite.json",
     data: {
@@ -60,28 +81,16 @@ export const listApi = (connType = "5", cityId = "027") => Http.get({
 
 //功能很多的页面 
 
-<<<<<<< HEAD
-export const sortApi = (id = 845) => Http.get({
-    url: "/api/mds/api/app/apiv3_0/GoodsListByKeywordPc.json",
-    data: {
-        isSelf: "",
-=======
 export const sortApi = (id=845,page=1) =>Http.get({
     url:"/api/mds/api/app/apiv3_0/GoodsListByKeywordPc.json",
     data:{
         isSelf:"",
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
         isStore: 0,
         type: 1,
         descs: "",
         cid: id,
-<<<<<<< HEAD
-        searchGoodsBrief: "",
-        page: 1,
-=======
         searchGoodsBrief:"", 
         page: page,
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961
         rows: 10,
         brandId: "",
         plngLat: "114.19683,30.54626",
@@ -129,7 +138,6 @@ export const getApi = (Id) =>Http.get({
     }
 })
 
-<<<<<<< HEAD
 //购物车推荐
 export const cartCommandApi = (page_no=1) => Http.post({
     url: "/front_api/recommend/order-cart",
@@ -146,7 +154,6 @@ export const cartCommandApi = (page_no=1) => Http.post({
 })
 
 
-=======
 export const ticketListApi = (id) =>Http.get({
     url:"api/mds/api/app/apiv3_0/goodsPmtList.json",
     data:{
@@ -163,4 +170,3 @@ export const ticketListApi = (id) =>Http.get({
         cityId: "027"
     }
 })
->>>>>>> c74ca575f06ec7df21474bb9672dbf7d233aa961

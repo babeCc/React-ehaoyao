@@ -1,16 +1,65 @@
-import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync} from "./homeActionType";
+import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync,modifyFlag} from "./homeActionType";
 
-import {activityApi,activityListApi,searchApi,goodsKeysApi,ticketApi,getApi,ticketListApi} from "api/activityA";
+import {activityApi,activityListApi,searchApi,goodsKeysApi,ticketApi,getApi,ticketListApi,registerApi,loginApi} from "api/activityA";
+import {changRegister,changeUsernameAction,changePasswordAction,regiserAsyncAction,loginAsyncAction} from "./homeActionType";
 
 import {createAction} from "redux-actions";
+import { Toast } from 'antd-mobile';
+
+// 登录注册
+export const loginAction = (username,password)=>{
+    let loginAsync = createAction(loginAsyncAction,(data)=>data);
+    return async (dispatch)=>{
+        let data = await loginApi(username,password);
+        // if(action.payload.data.code==1){
+        //     Toast.success(action.payload.data.info)
+
+        // }
+        // if(action.payload.data.code==2){
+        //     Toast.fail(action.payload.data.info)
+        // }
+        if(data.data.code == 1){
+            Toast.success(data.data.info,1.5)
+            sessionStorage.setItem("userInfo",JSON.stringify({name:data.data.data.name,urlPic:data.data.data.urlPic}))
+            dispatch(loginAsync(data));
+        
+            return data.data.code;
+        }else{
+            Toast.fail(data.data.info)
+        }
+    }
+}
+export const regiserAction=(username,password)=>{
+    let regiserAsync = createAction(regiserAsyncAction,(data)=>data);
+        
+    return async (dispatch)=>{
+       
+        let data = await registerApi(username,password);
+        dispatch(regiserAsync(data))
+    }
+}
+export const changeUsername= (value)=>({
+    type:changeUsernameAction,
+    value:value
+})
+export const changePassword= (value)=>({
+    type:changePasswordAction,
+    value:value
+})
+export const changeFlag=()=>({
+
+        type:changRegister
+
+})
+//shouye
 export const homeAsyncAction  = (connType,cityId)=>{
     let homeAction = createAction(homeAsync,(data)=>data)
             return async (dispatch)=>{
-           if(!localStorage.getItem("activity")){
+          
             let data = await activityApi();
            
             dispatch(homeAction(data));
-           }
+           
          
         }
        
@@ -88,3 +137,8 @@ export const ticketListAsyncAction = (id) =>{
         dispatch(ticketListAction(data))
     }
 }
+
+// activity flag
+export const flagAction=()=>({
+    type:modifyFlag,
+})

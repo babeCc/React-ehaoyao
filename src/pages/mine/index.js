@@ -3,25 +3,35 @@ import { Icon } from 'antd';
 // import { Header } from "../detail/styled";
 import { Header, Container } from "./styled"
 
-
+import {withRouter} from "react-router-dom";
+@withRouter
 class Mine extends React.Component {
+    constructor(){
+        super()
+        this.state={
+            userInfo:JSON.parse(sessionStorage.getItem("userInfo"))
+        }
+    }
     render() {
+        let {userInfo} = this.state;
         return (
             <Fragment>
                 <Header>
-                    <Icon type="left" />
-                    <div>
+                    <Icon type="left"onClick={this.handleBack.bind(this)} />
+                    <div >
                         个人中心
                     </div>
                     <span>设置</span>
                 </Header>
                 <Container>
                     <div className="title-box">
-                        <img src="../../../public/img/_20191128183059.png" alt="" />
-                        <h4>hys17715582879nxd</h4>
+                        <div className="picBox">
+                            <img src={userInfo.urlPic} alt="" />
+                        </div>
+                        <h4>{userInfo.name}</h4>
                         <span>充值</span>
                         <div className="fbox">
-                            <img src="../../../public/img/1574938198(1).jpg" alt="" />
+                            <img src="img/1574938198(1).jpg" alt="" />
                         </div>
 
                     </div>
@@ -65,13 +75,16 @@ class Mine extends React.Component {
                         </li>
                     </ul>
                     <div>
-                        <img src="../../../public/img/_20191128193206.png" alt=""/>
+                        <img src="img/_20191128193206.png" alt=""/>
                         
                     </div>
                     </div>
                 </Container>
             </Fragment>
         )
+    }
+    handleBack(){
+        this.props.history.goBack()
     }
 }
 export default Mine;

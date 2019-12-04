@@ -9,18 +9,22 @@ import { connect } from "react-redux";
 
 @withRouter
 class TabBar extends Component {
-    constructor(){
-        super()
-        
-      
+    constructor(props){
+        super(props)
+        this.state={
+            num:JSON.parse(localStorage.getItem("num"))
+        }
+     
     }
+   
     render(){
-        let {path,num}=this.props;
+      
+        let {path}=this.props;
         return(
             <TabBarContainer>
                 <div className="home_footer">
                     <ul>
-        <i>{JSON.parse(localStorage.getItem("num"))}</i>
+        <i style={{display:this.state.num?"block":"none"}}>{this.state.num}</i>
                         {
                             TabBarRoute.map((item)=>(
                             <li key={item.title} onClick={this.handleTo.bind(this,item.path)}
