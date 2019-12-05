@@ -17,7 +17,7 @@ class TicketList extends React.Component {
        
         
         let {name} = this.props.match.params;
-        console.log(data)
+        
         return (
             <TicketListContainer>
                 <div className="search_header">

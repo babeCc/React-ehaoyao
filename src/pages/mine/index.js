@@ -84,7 +84,7 @@ class Mine extends React.Component {
         )
     }
     handleBack(){
-        this.props.history.goBack()
+        this.props.history.push("/home")
     }
 }
 export default Mine;

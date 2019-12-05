@@ -160,7 +160,7 @@ class Detail extends React.Component {
                         </li>
                         </a>
                         <li  className="addCart">
-                            <span onClick={this.handleAddCart.bind(info,this)}>加入购物车</span>
+                            <span onClick={this.handleAddCart.bind(this,info)}>加入购物车</span>
                         </li>
                        
                         <li className="rightPerchase">
@@ -192,13 +192,13 @@ class Detail extends React.Component {
     }
     componentDidMount(){
         let{groupId} = this.props.match.params;
-        
+       
         this.props.handleGetDetailData(groupId);
        
     }
     handleAddCart(info,e){
-        let{groupId} = this.props.match.params;
-        var obj = {img:(info.bigPic?info.bigPic:"1,2").split(",")[0],groupId: groupId, name: info.goodsName, type:info.spec, price: info.price, num: 1 }
+      
+        var obj = {img:(info.bigPic?info.bigPic:"1,2").split(",")[0],groupId: info.groupId, name: info.goodsName, type:info.spec, price: info.price, num: 1 }
         e.stopPropagation()
         this.props.handleListAdd(obj)
     }

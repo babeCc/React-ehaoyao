@@ -2,12 +2,9 @@ import React,{Fragment} from "react"
 import {Icon} from "antd"
 import {Header,Container} from "./styled"
 import {connect} from "react-redux";
-<<<<<<< HEAD
 import {mapStateToProps,mapDispatchToProp} from "./mapStore";
-=======
 
 
->>>>>>> tutu
 import {withRouter} from "react-router-dom";
 @withRouter
 @connect(mapStateToProps,mapDispatchToProp)
@@ -17,13 +14,6 @@ import {withRouter} from "react-router-dom";
 
 
 class Login extends React.Component{
-<<<<<<< HEAD
-    constructor(props){
-        super(props)
-    }
-    render(){
-        console.log(this.props)
-=======
     constructor(){
         super()
         this.state={
@@ -32,7 +22,6 @@ class Login extends React.Component{
     }
     render(){
         let {status}=this.state;
->>>>>>> tutu
         return(
             <Fragment>
                
@@ -42,11 +31,7 @@ class Login extends React.Component{
                     <div>
                         会员登录
                     </div>
-<<<<<<< HEAD
                     <a onClick={this.handleChange.bind(this)}>{this.props.flag?"登录":"注册"}</a>
-=======
-                    <a onClick={this.handleTurn.bind(this)}>{status}</a>
->>>>>>> tutu
                 </Header>
                 <Container>
                

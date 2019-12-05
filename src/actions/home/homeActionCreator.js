@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync,modifyFlag} from "./homeActionType";
-=======
-import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync,changeKeyWord,pushChooseKeyWord} from "./homeActionType";
->>>>>>> tutu
+
+import{homeAsync,activityAsync,goodsKeysAsync,seacrhAsync,inputValueAction,ticketAsync,getAsync,getTicketListAsync,changeKeyWord,pushChooseKeyWord,modifyFlag} from "./homeActionType";
 
 import {activityApi,activityListApi,searchApi,goodsKeysApi,ticketApi,getApi,ticketListApi,registerApi,loginApi} from "api/activityA";
 import {changRegister,changeUsernameAction,changePasswordAction,regiserAsyncAction,loginAsyncAction} from "./homeActionType";
@@ -63,14 +60,9 @@ export const homeAsyncAction  = (connType,cityId)=>{
             let data = await activityApi();
 
             dispatch(homeAction(data));
-<<<<<<< HEAD
-           
-         
-=======
            }
->>>>>>> tutu
         }
-}
+
 
 // //传递关键字
 
@@ -153,19 +145,16 @@ export const ticketListAsyncAction = (id) =>{
     let ticketListAction = createAction (getTicketListAsync,(data)=>data);
     return async (dispatch)=>{
         let data = await ticketListApi(id);
-        console.log(data)
+       
         dispatch(ticketListAction(data))
     }
 }
 
-<<<<<<< HEAD
 // activity flag
 export const flagAction=()=>({
     type:modifyFlag,
 })
-=======
 
 
 
 
->>>>>>> tutu

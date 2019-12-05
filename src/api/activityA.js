@@ -105,32 +105,20 @@ export const listApi = (connType = "5", cityId = "027") => Http.get({
 
 //功能很多的页面 
 
-<<<<<<< HEAD
-export const sortApi = (id=845,page=1) =>Http.get({
-    url:"/api/mds/api/app/apiv3_0/GoodsListByKeywordPc.json",
-    data:{
-        isSelf:"",
-=======
 
 export const sortApi = (id = 845, page = 1) => Http.get({
     url: "/api/mds/api/app/apiv3_0/GoodsListByKeywordPc.json",
     data: {
         isSelf: "",
 
->>>>>>> tutu
         isStore: 0,
         type: 1,
         descs: "",
         cid: id,
-<<<<<<< HEAD
-        searchGoodsBrief:"", 
-        page: page,
-=======
 
         searchGoodsBrief: "",
         page: page,
 
->>>>>>> tutu
         rows: 10,
         brandId: "",
         plngLat: "114.19683,30.54626",
@@ -195,16 +183,9 @@ export const cartCommandApi = (page_no = 1) => Http.post({
     }
 })
 
-<<<<<<< HEAD
-
-export const ticketListApi = (id) =>Http.get({
-    url:"api/mds/api/app/apiv3_0/goodsPmtList.json",
-    data:{
-=======
 export const ticketListApi = (id) => Http.get({
     url: "/api/mds/api/app/apiv3_0/goodsPmtList.json",
     data: {
->>>>>>> tutu
         couponId: id,
         pharmacyId: 25,
         page: 1,
@@ -218,8 +199,6 @@ export const ticketListApi = (id) => Http.get({
         cityId: "027"
     }
 })
-<<<<<<< HEAD
-=======
 
 
 //列表页排序
@@ -264,4 +243,3 @@ export const getSerchSortProApi = (isSelf,type,descs,key) => Http.get({
         cityId: '027'
     }
 })
->>>>>>> tutu

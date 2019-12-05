@@ -1,22 +1,14 @@
 import {linkAsyncAction,sortIndexAction,sortXuanAction,changeKeyActions,serchXuanAction} from "actions/sort/sortActionCreator"
 import {AddProAction} from "actions/cart/cartActionCreator"
 export const mapStateToProps = (state)=>({
-<<<<<<< HEAD
-    totalPage:state.sort.totalPage,
-    goods:state.sort.goods
-})
-
-export const mapDispatchToProps = (dispatch)=>({
-    handleListAdd(obj){
-        dispatch(AddProAction(obj))
-       
-=======
     data:state.sort.data || [],
     goods:state.sort.goods,
     isSelf:state.sort.isSelf,
     type: state.sort.type,
     descs: state.sort.descs,
-    activeClass:state.sort.activeClass
+    activeClass:state.sort.activeClass,
+    totalPage:state.sort.totalPage,
+    reducerPage:state.sort.reducerPage
 })
 
 export const mapDispatchToProps = (dispatch)=>({
@@ -24,14 +16,11 @@ export const mapDispatchToProps = (dispatch)=>({
 
     handleListAdd(obj){
         dispatch(AddProAction(obj))
->>>>>>> tutu
     },
 
     handleGetLink(link,page){
        
         dispatch(linkAsyncAction(link,page))
-<<<<<<< HEAD
-=======
 
     },
     // handleGetData(index){
@@ -52,7 +41,6 @@ export const mapDispatchToProps = (dispatch)=>({
     //关键字默认渲染
     handleChangeKey(val,page){
         dispatch(changeKeyActions(val,page))
->>>>>>> tutu
     }
 
     

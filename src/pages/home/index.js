@@ -269,7 +269,7 @@ import BscrollCom from "../.././common/btrScroll";
             }
             handleLogin(e){
                 e.stopPropagation()
-              if(this.state.userInfo.name){
+              if(this.state.userInfo){
                   this.props.history.push('/mine')
               }else{
                 this.props.history.push("./login")

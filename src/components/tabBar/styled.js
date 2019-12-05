@@ -30,10 +30,10 @@ export const TabBarContainer = styled.div`
            bottom:25px;
            background:#ff344d;
             color: white;
-            width: .13rem;
-            height: .13rem;
-            line-height: .13rem;
-            font-size: .1rem;
+            width: .18rem;
+            height: .18rem;
+            line-height: .18rem;
+            font-size: .05rem;
             font-style: normal;
             border-radius:50%;
             right:23%;

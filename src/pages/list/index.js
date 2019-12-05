@@ -1,30 +1,19 @@
 import React, { Fragment } from "react"
 import { Header, Container } from "./styled"
 import { Icon } from 'antd';
-<<<<<<< HEAD
-import {withRouter} from "react-router-dom";
-import {mapStateToProps,mapDispatchToProps} from "./mapStore";
-import {connect} from "react-redux";
-import  BscrollY from "common/ScrollY";
-@connect(mapStateToProps,mapDispatchToProps)
-=======
 
 import { withRouter } from "react-router-dom";
 import { mapStateToProps, mapDispatchToProps } from "./mapStore";
 import { connect } from "react-redux";
 import BscrollY from "common/ScrollY";
+
 @connect(mapStateToProps, mapDispatchToProps)
 
->>>>>>> tutu
 @withRouter
 class List extends React.Component {
     constructor() {
         super()
-<<<<<<< HEAD
-        this.page=1;
-=======
         this.page = 1;
->>>>>>> tutu
         this.state = {
             nav: [
                 "综合排序",
@@ -33,15 +22,6 @@ class List extends React.Component {
                 "自营",],
             on: 0
         }
-<<<<<<< HEAD
-       
-    }
-    render() {
-       
-        let {goods} = this.props;
-       
-      
-=======
 
 
     }
@@ -49,14 +29,14 @@ class List extends React.Component {
     render() {
         let { nav } = this.state;
         let { goods, activeClass } = this.props;
->>>>>>> tutu
+        let {keyWord}=this.props.match.params
         return (
             <Fragment>
                 <Header>
                     <Icon type="left" onClick={this.handleBack.bind(this)} />
                     <div onClick={this.handleToSearch.bind(this)}>
                         <Icon type="search" />
-                        <span>请输入药品名称或症状</span>
+                        <span>{keyWord?keyWord:"请输入药品或症状"}</span>
 
                     </div>
                     <Icon type="pic-right" />
@@ -74,17 +54,6 @@ class List extends React.Component {
                         </ul>
                     </div>
                     <BscrollY ref="scroll">
-<<<<<<< HEAD
-                    <div className="product">
-                        <ul>
-                            {
-                                (goods?goods:[]).map((item, index) => (
-                                    <li key={index} onClick={this.handleToDetail.bind(this, item.groupId)}>
-                                        <div className="borderimg">
-                                            <div className="image">
-
-                                                <img src={"http://image.qumaiyao.com/" + item.smallPic} alt="" />
-=======
                         <div className="product">
                             <ul>
                                 {
@@ -95,7 +64,6 @@ class List extends React.Component {
 
                                                     <img src={"http://image.qumaiyao.com/" + item.smallPic} alt="" />
                                                 </div>
->>>>>>> tutu
                                             </div>
                                             <div className="content">
                                                 <p className="title to">
@@ -127,12 +95,8 @@ class List extends React.Component {
 
         )
     }
-<<<<<<< HEAD
-    componentWillUpdate(){
-       this.refs.scroll.handlefinishPullUp();
-    }
-    handleToDetail(groudId){
-=======
+   
+    
 
     handleClick(index) {
         // this.props.activeClass=index;
@@ -142,7 +106,7 @@ class List extends React.Component {
         // console.log(descs)
         if (index == 0) {
                 ff = "";
-                tt = type;
+                tt = 1;
                 dd = descs
         } else if (index == 1) {
             if (descs == 'asc') {
@@ -171,12 +135,9 @@ class List extends React.Component {
         
 
     }
-    componentWillUpdate() {
-        this.refs.scroll.handlefinishPullUp();
-    }
+   
     handleToDetail(groudId) {
 
->>>>>>> tutu
 
         this.props.history.push("/detail/" + groudId);
     }
@@ -186,62 +147,41 @@ class List extends React.Component {
     handleToSearch() {
         this.props.history.push("/search")
     }
-<<<<<<< HEAD
-    componentDidMount(){
-        let {link} = this.props.match.params;
-        let {totalPage} = this.props;
-        let page = 1;
-  
-        this.props.handleGetLink(link,page)
-     
-    }
+   
     componentDidUpdate(){
-        let {link} = this.props.match.params;
-     
-        let {totalPage} = this.props;
-      
-        let page = 1;
-        this.refs.scroll.handlepullingUp(()=>{
-           
-            if(page<totalPage){
-                page++;
-
-                this.props.handleGetLink(link,page)
-            }
-           
-        });
-=======
+        this.refs.scroll.handlefinishPullUp();
+    }
     componentDidMount() {
-        console.log(this.props.match.params)
+     
         let page = this.page;
-        
+      
         if(this.props.match.params.link){
   
               let { link } = this.props.match.params;
               this.props.handleGetLink(link, page)
-              this.refs.scroll.handlepullingUp(() => {
-
-                page++;
-    
-                this.props.handleGetLink(link, page)
-            });
+             
+           
         }else{
             let { keyWord } = this.props.match.params;
             // console.log(keyWord)
-            
             this.props.handleChangeKey(keyWord, page);
-              this.refs.scroll.handlepullingUp(() => {
-
-                page++;
-    
-                this.props.handleChangeKey(keyWord, page)
-            });
+          
         }
-      
-       
-  
-        
->>>>>>> tutu
+        this.refs.scroll.handlepullingUp(()=>{
+            let page = this.props.reducerPage;
+            if(this.props.reducerPage<this.props.totalPage){
+               
+                page++;
+             
+                if(this.props.match.params.link){
+                    let { link } = this.props.match.params;
+                        this.props.handleGetLink(link,page)
+                }else{
+                    let { keyWord } = this.props.match.params;
+                        this.props.handleChangeKey(keyWord,page)
+                }
+            }
+        })
 
     }
     handleAddCart(goods, index, e) {

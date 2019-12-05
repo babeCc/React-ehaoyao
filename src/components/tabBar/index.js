@@ -11,24 +11,18 @@ import { connect } from "react-redux";
 class TabBar extends Component {
     constructor(props){
         super(props)
-        this.state={
-            num:JSON.parse(localStorage.getItem("num"))
-        }
+     
      
     }
    
     render(){
       
-        let {path}=this.props;
+        let {path,num}=this.props;
         return(
             <TabBarContainer>
                 <div className="home_footer">
                     <ul>
-<<<<<<< HEAD
-        <i style={{display:this.state.num?"block":"none"}}>{this.state.num}</i>
-=======
-        <i style={{display:localStorage.getItem("num")?'block':'none'}}>{JSON.parse(localStorage.getItem("num"))}</i>
->>>>>>> tutu
+        <i style={{display:num?'block':'none'}}>{num}</i>
                         {
                             TabBarRoute.map((item)=>(
                             <li key={item.title} onClick={this.handleTo.bind(this,item.path)}

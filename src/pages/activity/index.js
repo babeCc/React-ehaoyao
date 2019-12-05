@@ -53,11 +53,8 @@ class Activity extends React.Component {
                                 <div className="opt">
                                     <span className="price"><i>￥</i>{item.buyingPrice}<span className="old-price">￥{item.price}</span></span>
 
-<<<<<<< HEAD
-                                    <span className="btn_base" onClick={this.handleBox.bind(this)}>立即抢购</span>
-=======
+                                  
                                     <span className="btn_base" onClick={this.handleAddCart.bind(this, goods, index)}>立即抢购</span>
->>>>>>> tutu
                                 </div>
                             </div>
                         </div>
@@ -70,15 +67,7 @@ class Activity extends React.Component {
 
         )
     }
-    handleBox(e){
-        
-        e.stopPropagation();
-       
-           this.props.handleFlag()
-          
-        
-          
-    }
+ 
     handleToDetail(groupId){
        
         this.props.history.push("/detail/"+groupId)
@@ -92,6 +81,9 @@ class Activity extends React.Component {
         var obj = {img:"http://image.qumaiyao.com/"+goods[index].smallPic,groupId: goods[index].goodsId, name: goods[index].goodsName, type: goods[index].spec, price: goods[index].buyingPrice, num: 1 }
         e.stopPropagation()
         this.props.handleListAdd(obj)
+     
+       
+           this.props.handleFlag()
         // console.log(goods[index].goodsName, goods[index].spec, goods[index].price)
         // console.log(obj)
     }

@@ -5,6 +5,7 @@ export const sortAsyncAction = (id,page)=>{
     let sortAction = createAction(sortAsync,(data)=>data)
         return async (dispatch)=>{
             let data = await sortApi(id,page);
+          
             dispatch(sortAction(data))
         }
 }
@@ -27,7 +28,7 @@ export const sortXuanAction = (isSelf,type,descs,key,index)=>{
     return async (dispatch)=>{
         let data = await sortXuanApi(isSelf,type,descs,key);
         let obj={
-        arr:data.data.goodsList,
+        arr:data,
         isSelf,
         type,
         descs,
@@ -46,7 +47,7 @@ export const changeKeyActions = (val,page) =>{
     return async (dispatch)=>{
         let data = await getSerchProApi(val,page);
         let obj={
-            list:data.data.goodsList,
+            list:data,
             val:val
         }
         console.log(obj)
@@ -60,13 +61,13 @@ export const serchXuanAction = (isSelf,type,descs,key,index) =>{
     return async (dispatch)=>{
         let data = await getSerchSortProApi(isSelf,type,descs,key);
         let obj={
-            list:data.data.goodsList,
+            list:data,
             isSelf,
             type,
             descs,
             index
         }
-        console.log(obj)
+       
         dispatch(serchXuanProAction(obj))
     }
 }

@@ -67,13 +67,13 @@ class Cart extends React.Component {
                                                 <h3>{item.type}</h3>
 
                                                 <div className="number">
-                                                    <p>¥<span>{item.price}</span></p>
+                                                    <p>¥<span>{(item.price*100)/100}</span></p>
                                                     <div>
                                                         <div className="pri">
-                                                            <Icon type="minus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.reduceHandle.bind(this, item.groupId)} />
+                                                            <Icon type="minus" style={{ fontSize: '16fpx', color: '#cccccc' }} onClick={this.reduceHandle.bind(this, item.groupId)} />
 
                                                             <input type="text" value={item.num} onChange={this.handleChangeNum.bind(this, item.groupId)} />
-                                                            <Icon type="plus" style={{ fontSize: '10px', color: '#cccccc' }} onClick={this.addHandle.bind(this, item.groupId)} />
+                                                            <Icon type="plus" style={{ fontSize: '16px', color: '#cccccc' }} onClick={this.addHandle.bind(this, item.groupId)} />
 
                                                         </div>
                                                         <Icon type="rest" style={{ fontSize: '18px', color: 'rgb(154, 154, 154)' }} />
@@ -175,7 +175,7 @@ class Cart extends React.Component {
                     <div className="cart-footer">
                         <p>
                             合计
-                                <span>￥{countPrice}</span>
+                                <span>￥{(countPrice*100)/100}</span>
                         </p>
                         <h5>
                             结算({countNum})

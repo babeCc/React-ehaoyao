@@ -63,18 +63,13 @@ export const TabBarRoute = [
         title:"我的",
         icon:"\ue659"
     },
-<<<<<<< HEAD
-=======
 
     
     
->>>>>>> tutu
 ];
 
 
 export const NoTabBarRoute = [
-<<<<<<< HEAD
-=======
     {
         path:"/list/:link",
         component:List,
@@ -93,7 +88,6 @@ export const NoTabBarRoute = [
         title:"",
         icon:""
     },
->>>>>>> tutu
     
     {
         path:"/ticketlist/:id/:name",

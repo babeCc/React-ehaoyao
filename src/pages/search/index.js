@@ -49,7 +49,7 @@ class Search extends React.Component{
                         <dt className="title" >热门搜索</dt>
                         {
                             (goodsKey?goodsKey:[]).map((item)=>(
-                            <dd key={item.keysId}>{item.keysValue}</dd>
+                            <dd key={item.keysId} onClick={this.chooseHandle.bind(this,item.keysValue)}>{item.keysValue}</dd>
                             ))
                         }
                     </dl>
